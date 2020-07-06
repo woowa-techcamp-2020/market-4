@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="sign-up-area d-flex">
+        <div class="sign-up-container d-flex">
+          <div class="image-wrapper d-flex">
+            <img class="title-image" src="https://ceo.baemin.com/cdn/ceo-moon/static/desktop/main/logo-ceo.svg?ver=37ff4fc80c3dfb2e2c76b41825e4c4da">
+          </div>
+          <form class="sign-up-form">
+            <p class="desc-info">필수 정보를 입력해주세요.</p>
+            <div class="input-form"><input class="sign-up-input" name="id" type="text" placeholder="아이디* (4~20자)" maxlength="20" minlength="4"></div>
+            <div class="input-form"><input class="sign-up-input"></div>
+            <div class="input-form"><input class="sign-up-input"></div>
+            <div class="email-form d-flex">
+              <input>
+              @
+              <input>
+            </div>
+            <div class="email-select"><select></select></div>
+            <div class="input-form"><input></div>
+            <div class="phone-form d-flex">
+              <input>
+              <button>인증받기</button>
+            </div>
+            <div class="description-wrapper">
+              <li class="description"> 인증번호 전송은 통신사에 따라 최대 1분까지 소요될 수 있습니다.</li>
+              <li class="description"> 인증번호가 도착하지 않을 경우 '인증번호 재전송'을 눌러주세요.</li>
+            </div>
+            <div class="check-optional d-flex">
+              <input type="checkbox">
+              <label>선택 정보를 입력하시겠어요?</label>
+              <a href="https://ceo.baemin.com/#/policy/history?position=collectionAndUsageNormal">내용보기</a>
+            </div>
+            <div class="postcode-form d-flex">
+              <input><button>주소찾기</button>
+            </div>
+            <div class="input-form" ><input placeholder="주소"></div>
+            <div class="input-form"><input placeholder="상세 주소"></div>
+            <div class="admit-form">
+              <div class="check-form d-flex"><input type="checkbox"><label>전체 약관에 동의합니다</label></div>
+              <div class="check-form d-flex"><input type="checkbox"><label>필수 항목에 동의합니다.</label></div>
+              <div class="check-link d-flex">
+                <a href="https://ceo.baemin.com/#/policy/history?position=terms">배민사장님광장 이용약관</a>
+                <a href="https://ceo.baemin.com/#/policy/history?position=collectionAndUsageNormal">개인정보 수집이용 동의</a>
+              </div>
+              <div class="check-form d-flex"><input type="checkbox"><label>광고성 정보 수신 동의 (선택)</label></div>
+              <div class="check-link d-flex">
+                배민사장님광장 회원에게 제공하는 서비스의 광고성 정보를 수신합니다.
+              </div>
+              <div class="d-flex m-15">
+                <li>
+                  만 14세 이상 회원만 가입 가능합니다.
+                </li>
+                <a>내용보기</a>
+              </div>
+              <div class="input-form">
+                <button>가입 완료</button>
+              </div>
+            </div>
+          </form>
+        </div>
+    </div>
+</body>
+<style>
+  * {
+    margin: 0;
+  }
+  .sign-up-area {
+      width: 100%;
+      justify-content:center;
+  }
+  .sign-up-area .sign-up-container {
+      width: 328px;
+      background: #efefef;
+      padding: 80px 0 60px;
+      justify-content:center;
+      flex-direction: column;
+  }
+  .sign-up-container .sign-up-form .input-form{
+    width: 325px;
+    height: 50px;
+  }
+  .sign-up-form .desc-info {
+      height: 25px;
+      line-height: 25px;
+      font-size: 16px;
+      letter-spacing: -0.4px;
+      color:#212329;
+      padding-bottom: 20px;
+  }
+  .sign-up-form .input-form .sign-up-input {
+    width: calc(100% - 28px);
+    height: calc(100% - 24px);
+    padding: 12px 14px;
+    border: 1px solid;
+    font-size: 16px;
+    line-height: 24px;
+    letter-spacing: -0.6px;
+    border-color: #d7dbe6;
+  }
+  .image-wrapper {
+    width: 100%;
+    margin-bottom: 40px;
+    justify-content: center;
+  }
+  .image-wrapper .title-image {
+    width: 220px;
+  }
+  .description-wrapper {
+    margin-bottom: 50px;
+  }
+  .admit-form {
+    padding: 50px 0 33px;
+  }
+  .check-form {
+    margin-top: 15px;
+  }
+  .check-link {
+    padding: 2px 0 0 43px;
+  }
+  .m-15 {
+    margin: 15px;
+  }
+
+  .d-flex {
+    display: flex;
+  }
+</style>
+</html>
