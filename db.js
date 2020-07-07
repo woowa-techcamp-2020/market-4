@@ -88,27 +88,33 @@ class MemberRepository {
     deleteTable() {
         return this.dao.run("DELETE FROM members");
     }
-    getUserById(userid) {
-        const SELECT_USER_QUERY = `SELECT * FROM members WHERE userid = "${userid}"`;
-        console.log(SELECT_USER_QUERY);
+    runQuery(query) {
         return new Promise((res, rej) => {
-            this.dao.db.each(SELECT_USER_QUERY, (err, row) => {
-                if(err) throw err;
-                else {
-                    res(row);
-                }
-            });
+            this.dao.db.get(query, (err, row) => {
+                if(err) rej(err);
+                else res(row);
+            })
         });
+    }
+    async getUserById(userid) {
+        const SELECT_USER_QUERY = `SELECT * FROM members WHERE userid = "${userid}"`;
+        return await this.runQuery(SELECT_USER_QUERY);
+    }
+    async confirmUser(userid, password) {
+        const query = `SELECT * from members WHERE userid="${userid}" AND password="${password}"`;
+        const result = await this.runQuery(query);
+        return result;
     }
 }
 
-async function init() {
+function init() {
     const db = new AppDAO(MEMORY_DB);
     const memberDAO = new MemberRepository(db);
-    await memberDAO.createTable();
+    memberDAO.createTable().then(() => {
+        memberDAO.addUser(["abc", "password", "james", "james@email.com", "123123123", "000-000", "주소1", "주소2", true]);
+    });
     // userid, password, name, email, phone, postcode, address1, address2, advcheck
     // 기본 데이터 하나 추가 
-    await memberDAO.addUser(["abc", "password", "james", "james@email.com", "123-123-123", "000-000", "주소1", "주소2", true]);
     return {db, memberDAO};
 }
 
