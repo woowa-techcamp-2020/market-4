@@ -1,1 +1,71 @@
-회원가입
+doctype html
+head
+  meta(charset='UTF-8')
+  meta(name='viewport' content='width=device-width, initial-scale=1.0')
+  title Document
+  link(rel='stylesheet' href='/stylesheets/signup.css')
+.sign-up-area.d-flex
+  .sign-up-container.d-flex
+    .image-wrapper.d-flex
+      img.title-image(src='https://ceo.baemin.com/cdn/ceo-moon/static/desktop/main/logo-ceo.svg?ver=37ff4fc80c3dfb2e2c76b41825e4c4da')
+    form.sign-up-form
+      p.desc-info &#xD544;&#xC218; &#xC815;&#xBCF4;&#xB97C; &#xC785;&#xB825;&#xD574;&#xC8FC;&#xC138;&#xC694;.
+      .input-form
+        input.sign-up-input.text-input(name='id' type='text' placeholder='아이디* (4~20자)' maxlength='20' minlength='4')
+      .input-form.mt-10
+        input.sign-up-input.text-input(type='password' placeholder='비밀번호* (영문+숫자, 8~20자)' maxlength='20')
+      .input-form.mt-10
+        input.sign-up-input.text-input(type='password' placeholder='비밀번호 재확인*' maxlength='20')
+      .email-form.d-flex.mt-10
+        .email-input
+          input.sign-up-input.text-input(placeholder='이메일 앞자리*')
+        .t-center.at @
+        .email-input
+          input.sign-up-input.text-input(placeholder='이메일 뒷자리*')
+      .email-select.mt-10
+        select.select-input
+      .input-form.mt-10
+        input.sign-up-input.text-input(placeholder='이름*')
+      .phone-form.d-flex.mt-10
+        .phone-input
+          input.sign-up-input.text-input(placeholder='휴대폰*')
+        button.sign-button(disabled='true') &#xC778;&#xC99D;&#xBC1B;&#xAE30;
+      .description-wrapper
+        ul
+          li.description  &#xC778;&#xC99D;&#xBC88;&#xD638; &#xC804;&#xC1A1;&#xC740; &#xD1B5;&#xC2E0;&#xC0AC;&#xC5D0; &#xB530;&#xB77C; &#xCD5C;&#xB300; 1&#xBD84;&#xAE4C;&#xC9C0; &#xC18C;&#xC694;&#xB420; &#xC218; &#xC788;&#xC2B5;&#xB2C8;&#xB2E4;.
+          li.description  &#xC778;&#xC99D;&#xBC88;&#xD638;&#xAC00; &#xB3C4;&#xCC29;&#xD558;&#xC9C0; &#xC54A;&#xC744; &#xACBD;&#xC6B0; &apos;&#xC778;&#xC99D;&#xBC88;&#xD638; &#xC7AC;&#xC804;&#xC1A1;&apos;&#xC744; &#xB20C;&#xB7EC;&#xC8FC;&#xC138;&#xC694;.
+      .check-optional.d-flex
+        input#check-optional-input(type='checkbox')
+        label(for='check-optional-input') &#xC120;&#xD0DD; &#xC815;&#xBCF4;&#xB97C; &#xC785;&#xB825;&#xD558;&#xC2DC;&#xACA0;&#xC5B4;&#xC694;?
+        a.view-desc(target='blank' href='https://ceo.baemin.com/#/policy/history?position=collectionAndUsageNormal') &#xB0B4;&#xC6A9;&#xBCF4;&#xAE30;
+      .postcode-form.phone-form.d-flex
+        .phone-input
+          input.sign-up-input.text-input(placeholder='우편번호')
+        button.sign-button(disabled='true') &#xC8FC;&#xC18C;&#xCC3E;&#xAE30;
+      .input-form.mt-10
+        input.sign-up-input.text-input(placeholder='주소')
+      .input-form.mt-10
+        input.sign-up-input.text-input(placeholder='상세 주소')
+      .admit-form
+        .mt-15.d-flex
+          input#all(type='checkbox')
+          label.all(for='all') &#xC804;&#xCCB4; &#xC57D;&#xAD00;&#xC5D0; &#xB3D9;&#xC758;&#xD569;&#xB2C8;&#xB2E4;
+        .mt-25.d-flex
+          input#essential(type='checkbox')
+          label(for='essential') &#xD544;&#xC218; &#xD56D;&#xBAA9;&#xC5D0; &#xB3D9;&#xC758;&#xD569;&#xB2C8;&#xB2E4;.
+        .check-link.d-flex
+          a(target='blank' href='https://ceo.baemin.com/#/policy/history?position=terms') &#xBC30;&#xBBFC;&#xC0AC;&#xC7A5;&#xB2D8;&#xAD11;&#xC7A5; &#xC774;&#xC6A9;&#xC57D;&#xAD00;
+          a(target='blank' href='https://ceo.baemin.com/#/policy/history?position=collectionAndUsageNormal') &#xAC1C;&#xC778;&#xC815;&#xBCF4; &#xC218;&#xC9D1;&#xC774;&#xC6A9; &#xB3D9;&#xC758;
+        .mt-15.d-flex
+          input#receive_optional(type='checkbox')
+          label(for='receive_optional') &#xAD11;&#xACE0;&#xC131; &#xC815;&#xBCF4; &#xC218;&#xC2E0; &#xB3D9;&#xC758; (&#xC120;&#xD0DD;)
+        .check-link.d-flex
+          | &#xBC30;&#xBBFC;&#xC0AC;&#xC7A5;&#xB2D8;&#xAD11;&#xC7A5; &#xD68C;&#xC6D0;&#xC5D0;&#xAC8C; &#xC81C;&#xACF5;&#xD558;&#xB294; &#xC11C;&#xBE44;&#xC2A4;&#xC758; &#xAD11;&#xACE0;&#xC131; &#xC815;&#xBCF4;&#xB97C; &#xC218;&#xC2E0;&#xD569;&#xB2C8;&#xB2E4;.
+        .d-flex.my-15.description-wrapper
+          ul
+            li.description
+              | &#xB9CC; 14&#xC138; &#xC774;&#xC0C1; &#xD68C;&#xC6D0;&#xB9CC; &#xAC00;&#xC785; &#xAC00;&#xB2A5;&#xD569;&#xB2C8;&#xB2E4;.
+          a.view-desc(target='blank' style='padding: 1px 4px') &#xB0B4;&#xC6A9;&#xBCF4;&#xAE30;
+        .input-form
+          button.sign-up-confirm-btn.btn &#xAC00;&#xC785; &#xC644;&#xB8CC;
+script(src='/javascripts/signup.js')

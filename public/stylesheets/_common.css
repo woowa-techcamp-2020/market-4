@@ -1,0 +1,19 @@
+:root {
+  --input-border-color: #d7dbe6;
+  --active-btn-color:  #1a7cff;
+}
+
+input:focus { 
+  outline: none !important;
+}
+button:focus {
+  outline: none !important;
+}
+select:focus{
+  outline: none !important;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}

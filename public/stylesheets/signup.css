@@ -1,7 +1,5 @@
-* {
-  margin: 0;
-  padding: 0;
-}
+@import './_common.css';
+
 .sign-up-area {
   width: 100%;
   justify-content:center;
@@ -49,7 +47,8 @@
   width: 100%;
   height: 50px;
   padding: 5px 14px;
-  border: 1px solid #d7dbe6;
+  border: 1px solid;
+  border-color: var(--input-border-color);
   font-size: 17px;
   -webkit-appearance: none;
   background: #fff url(https://ceo.baemin.com/cdn/ceo-moon/static/desktop/down-arrow@2x.png?ver=a00037bb636e8fcc0738572e0b99441e) 95% 50% no-repeat;
@@ -71,8 +70,8 @@
   font-weight: bold;
   width: 98px;
   background: white;
-  color:  #1a7cff;
-  border-color:  #1a7cff;
+  color: var(--active-btn-color);
+  border-color: var(--active-btn-color);
 }
 
 .sign-button[disabled='true'] {
@@ -83,7 +82,7 @@
 
 .admit-form .input-form .sign-up-confirm-btn {
   color: white;
-  background-color: #1a7cff;
+  background-color: var(--active-btn-color);
   width: 100%;
   height: 50px;
   border: none;
@@ -174,7 +173,7 @@ input[type=checkbox]+ label:before {
   bottom: 2px;  
   border-radius: 3px; 
   border: 1px solid;
-  border-color: #d7dbe6;
+  border-color: var(--input-border-color);
 }
 input[type=checkbox]:checked + label:before { 
   background: url(https://ceo.baemin.com/cdn/ceo-moon/static/mobile/main/sp-inputs.png?ver=ee119bd3333d0c330c74fa3151f21fae) no-repeat;
@@ -204,21 +203,11 @@ input[type=checkbox]:checked + label:before {
   line-height: 24px;
   letter-spacing: -0.6px;
   padding: 12px 14px;
-  border-color: #d7dbe6;
+  border-color: var(--input-border-color);
 }
 
 .text-input::placeholder {
   color: #bbb;
-}
-
-input:focus { 
-  outline: none !important;
-}
-button:focus {
-  outline: none !important;
-}
-select:focus{
-  outline: none !important;
 }
 
 ul{
@@ -253,16 +242,17 @@ ul li::before {
     margin-top: 25px;
 } 
 
-.d-flex {
-  display: flex;
-}
-.t-center {
-  text-align: center;
-}
 
 .btn {
   padding: 16px 0 14px;
   font-weight: bold;
   text-align: center;
   font-size: 18px;
+}
+
+.d-flex {
+  display: flex;
+}
+.t-center {
+  text-align: center;
 }
