@@ -5,17 +5,12 @@ const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 
 const indexRouter = require('./routes/index');
-// const signupRouter = require('./router/signup');
+const signupRouter = require('./routes/signup');
 const loginRouter = require('./routes/login');
 
 // DB 관련
 const MEMORY_DB = ':memory:';
 const LOCAL_DB = './local.db';
-const {Db, MemberRepository} = require('./db');
-
-const db = await new Db(MEMORY_DB);
-const memberRepository = await new MemberRepository(Db);
-await memberRepository.createTable();
 
 var app = express();
 
@@ -29,7 +24,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
-// app.use('/signup', signupRouter);
+app.use('/signup', signupRouter);
 app.use('/login', loginRouter);
 
 app.use(function(req, res, next) {

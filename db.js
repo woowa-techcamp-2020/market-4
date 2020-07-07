@@ -102,17 +102,9 @@ class MemberRepository {
     }
 }
 
-// dbClose();
-// async function run() {
-//     const dao = await new AppDAO(MEMORY_DB);
-//     const memberRepository = await new MemberRepository(dao);
-//     await memberRepository.createTable();
-    
-//     await memberRepository.addUser(["aaaaa", "pass", "namename", "email@meail.com", "", "", "", "", ""]);
-//     await memberRepository.addUser(["bbbbb", "pass", "namename", "email@meail.com", "", "", "", "", ""]);
+const db = await new Db(MEMORY_DB);
+const memberDAO = await new MemberRepository(Db);
+await memberDAO.createTable();
 
-//     const result = await memberRepository.getUserById("aaaaa");
-//     console.log("result : ", result);
-// }
 
-module.exports = {AppDAO, MemberRepository}
+module.exports = {db, memberDAO}
