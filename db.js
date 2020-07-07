@@ -102,9 +102,14 @@ class MemberRepository {
     }
 }
 
-const db = await new Db(MEMORY_DB);
-const memberDAO = await new MemberRepository(Db);
-await memberDAO.createTable();
+async function init() {
+    const db = new AppDAO(MEMORY_DB);
+    const memberDAO = new MemberRepository(db);
+    await memberDAO.createTable();
+    // userid, password, name, email, phone, postcode, address1, address2, advcheck
+    // 기본 데이터 하나 추가 
+    await memberDAO.addUser(["abc", "password", "james", "james@email.com", "123-123-123", "000-000", "주소1", "주소2", true]);
+    return {db, memberDAO};
+}
 
-
-module.exports = {db, memberDAO}
+module.exports = init();
