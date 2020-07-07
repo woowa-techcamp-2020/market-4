@@ -3,6 +3,11 @@
   --active-btn-color:  #1a7cff;
 }
 
+* {
+  margin: 0;
+  padding: 0;
+}
+
 input:focus { 
   outline: none !important;
 }
@@ -11,9 +16,4 @@ button:focus {
 }
 select:focus{
   outline: none !important;
-}
-
-* {
-  margin: 0;
-  padding: 0;
 }

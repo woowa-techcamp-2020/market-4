@@ -12,7 +12,7 @@
 }
 .sign-up-container .sign-up-form .input-form {
   width: 325px;
-  height: 50px;
+  /* height: 50px; */
 }
 .sign-up-form .desc-info {
   height: 25px;
@@ -224,6 +224,22 @@ ul li::before {
   height: 3px;
   background: #bbc0cd;
   border-radius: 50%;
+}
+
+.error-border {
+  border-color: #f52926 !important;
+}
+
+.error-message {
+  color: #f52926 !important;
+}
+
+.text-message {
+  color: #8e929f;
+  margin-top: 8px;
+  font-size: 14px;
+  line-height: 22px;
+  letter-spacing: -0.4px;
 }
 
 .my-15 {
