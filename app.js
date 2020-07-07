@@ -8,12 +8,6 @@ const indexRouter = require('./routes/index');
 const signupRouter = require('./routes/signup');
 const loginRouter = require('./routes/login');
 
-// DB 관련
-const MEMORY_DB = ':memory:';
-const LOCAL_DB = './local.db';
-
-require('./db.js');
-
 
 var app = express();
 
