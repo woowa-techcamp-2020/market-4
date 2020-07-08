@@ -117,5 +117,5 @@ function init() {
     // 기본 데이터 하나 추가 
     return {db, memberDAO};
 }
-
-module.exports = init();
+const r = init();
+module.exports = r;

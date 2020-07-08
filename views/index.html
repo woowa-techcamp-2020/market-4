@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<link rel="stylesheet" href="../public/stylesheets/_common.css">
+<style>
+.complete-area {
+    display: flex;
+    width: 100%;
+    height: 960px;
+    justify-content: center;
+    /* font-size: 18px; */
+}
+.complete-wrap {
+    position : relative;
+    height : 100%;
+}
+.complete-wrap .content {
+    height : 900px;
+    display : flex;
+    align-items: center;
+}
+.complete-wrap.footer {
+    position : absolute;
+    bottom : 0px;
+}
+.footer {
+    color: #8e929f;
+    text-align: center;
+    font-size: 12px;
+}
+.footer .footer-link > a > img {
+    height:18px;
+}
+.complete-container {
+    width:360px;
+    justify-content:center;
+    flex-direction: column;   
+    padding:50px 30px;
+}
+
+.modify-link {
+    margin-top:20px;
+}
+.complete-container .main-link a,i{
+    color:blue;
+    font-weight:400;
+    text-decoration: none;
+}
+
+.complete-container-title {
+    margin: 0 0 38px;
+}
+.complete-container-title img{
+    width: 272px;
+    height: 40px;
+}
+.complete-container-title h1 {
+    margin-top: 10px;
+    font-weight : 400;
+}
+
+.complete-info .info-box {
+    margin-top : 20px;
+    position: relative;
+    outline: 1px solid #dfdede;
+    list-style: none;
+    padding:20px 20px;
+}
+.complete-info .info-box li {
+    margin-top:20px;
+}
+.complete-info .info-box li:first-child{
+    margin-top: 0px;
+}
+.complete-info .info-box li span {
+    display: inline-block;
+}
+.info-box li span:first-child{
+    color:#8e929f;
+    width:60px;
+}
+.modify-link {
+    color:#8e929f;
+}
+.modify-link a {
+    color : #8e929f;
+}
+
+.complete-area .footer .footer-link {
+    display: flex;
+    justify-content: space-around;
+}
+</style>
+<body>
+    <div class="complete-area">
+        <div class="complete-wrap">
+            <div class="content">
+                <div class="complete-container">
+                    <div class="complete-container-title">
+                        <a href="/">
+                            <img src="../public/images/logo-ceo.png" alt="">
+                        </a>
+                        <h1>회원이 되셨습니다.</h1>
+                    </div>
+                    <div class="main-link">
+                        <a href="/">메인으로 <i class='fas fa-arrow-right'></i></a>
+                    </div>
+                    <div class="complete-info">
+                        <ul class="info-box">
+                            <li><span>이름</span><span>가나다</span></li>
+                            <li><span>아이디</span><span>ididid</span></li>
+                            <li><span>이메일</span><span>email@email.com</span></li>
+                            <li><span>휴대폰</span><span>010-2345-2345</span></li>
+                        </ul>
+                        <p class="modify-link">위 정보는 <a href="">내 정보 관리</a>에서 수정하실 수 있습니다.</a></p>
+                    </div>
+                </div>    
+            </div>
+            <div class="footer">
+                <div class="footer-link">
+                    <a href="https://mart.baemin.com/"><img src="/images/login-logo-mart.png" alt=""></a>
+                    <a href="https://academy.baemin.com/?utm_source=ceopage&utm_medium=link&utm_campaign=ongoing&utm_content=logo_login"><img src="/images/login-logo-academy.png" alt=""></a>
+                    <a href="https://note.baemin.com/"><img src="/images/login-logo-jangbu.png" alt=""></a>
+                </div>
+                <p class="copyright">© Woowa Brothers Corp.</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

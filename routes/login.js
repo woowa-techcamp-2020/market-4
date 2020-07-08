@@ -1,6 +1,7 @@
 const router = require('express').Router();
 const { db, memberDAO } = require('../db.js');
 
+console.log(db, memberDAO);
 
 router.get('/', (req, res, next) => {
   let valid;
@@ -9,6 +10,7 @@ router.get('/', (req, res, next) => {
 });
 
 router.post('/', async (req, res, next) => {
+  
   const { userid, password } = req.body;
   const result = await memberDAO.confirmUser(userid, password);
 

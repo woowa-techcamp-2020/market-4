@@ -1,20 +1,42 @@
-<!DOCTYPE html>
-html(lang="ko")
-    head
-        meta(charset="UTF-8")
-        meta(name="viewport", content="width=device-width, initial-scale=1.0")
-        title Document
-
+doctype html
+html(lang="en")
+  head
+    meta(charset="UTF-8")
+    meta(name="viewport" content="width=device-width, initial-scale=1.0")
     title 배달의민족 사장님 통합 로그인
-
-div    
-    form(action='/login' method='post')
-        p 배민 사장님 공간
-        p
-            input(type='text' name='userid' id='' placeholder='아이디')
-        p
-            input(type='text' name='password' id='' placeholder='비밀번호')
-        p
-            input(type='checkbox' name='userid-save' id='')
-        p
-            button(type='submit') 로그인
+  link(rel="stylesheet" href="/stylesheets/_common.css")
+  link(rel="stylesheet" href="/stylesheets/login.css")
+  body
+    .login-area
+      .login-wrap
+        .content
+          .login-container
+            h1.login-container-title
+              a(href="/")
+                img(src="/images/logo-ceo.png" alt="")
+            div
+              form.login-form(action="/login" method="post")
+                p.input-id
+                  input(type="text" name="userid" id="" placeholder="아이디")
+                p.input-password
+                  input(type="password" name="password" id="" placeholder="비밀번호")
+                .login-etc
+                  p.id-save
+                    input(type="checkbox" name="userid-save" id="")
+                    span 아이디 저장
+                  p.login-not
+                    a(href="") 아이디
+                    |  / 
+                    a(href="") 비밀번호 찾기
+                    a(href="") 회원가입
+                p
+                  button.login-submit-btn(type="submit") 로그인
+        .footer
+          .footer-link
+            a(href="https://mart.baemin.com/")
+              img(src="/images/login-logo-mart.png" alt="")
+            a(href="https://academy.baemin.com/?utm_source=ceopage&utm_medium=link&utm_campaign=ongoing&utm_content=logo_login")
+              img(src="/images/login-logo-academy.png" alt="")
+            a(href="https://note.baemin.com/")
+              img(src="/images/login-logo-jangbu.png" alt="")
+          p.copyright © Woowa Brothers Corp.
