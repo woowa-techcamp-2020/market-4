@@ -1,24 +1,25 @@
 const validator = new function() {
-  this.userId = async function(value) {
+  this.userId = function (value) {
     const check = /^[\_\-a-z0-9]{4,20}$/;
     if (value.length === 0) {
       return this.reject('아이디를 입력해 주세요.');
     } else if (!check.test(value)) {
       return this.reject('아이디는 영소문자와 숫자, 특수기호(_, -)로 4자~20자 사이로 입력해 주세요.');
     } else {
-      const result = await $fetch(value);
-      return result;
+      return this.resolve();
     }
+    // 중복 검사 o : 입력하신 아이디로 사용이 가능합니다. return this.resolve();
+    // 중복 검사 x : 이미 사용중인 아이디 입니다. 다른 아이디를 입력해 주세요.
   }
 
-  this.password = function (value) {
+  this.password = function(value) {
     if (value.length < 8) {
       return this.reject('비밀번호는 영문과 숫자를 포함하여 8~20자로 입력해 주세요.');
     }
     return this.resolve();
   }
 
-  this.check_password = function(value1, value2) {
+  this.check_password = function (value1, value2) {
     if (value1.length === 0 && value2.length === 0) {
       return this.reject('비밀번호 확인을 위해 한번 더 입력해 주세요');
     } else if (value1 === value2) {
@@ -45,7 +46,7 @@ const validator = new function() {
     return this.resolve();
   }
 
-  this.name = function(value) {
+  this.name = function (value) {
     const check = /[0-9~!@#$%^&*()_+|<>?:{}]/;
     if (value.length === 0) {
       return this.reject('이름을 입력해 주세요.');
@@ -81,5 +82,3 @@ const validator = new function() {
     };
   }
 }
-
-export default validator;

@@ -28,7 +28,7 @@
 } 
 .sign-up-form .email-form .email-input {
   width: 150px;
-  height: 50px;
+  /* height: 50px; */
 }
 
 .sign-up-form .email-form .at {
@@ -55,9 +55,12 @@
   background-size: 16px 16px;
 }
 
+.email-form {
+  color: #bcc0cf !important;
+}
+
 .phone-form {
   width: 100%;
-  height: 50px;
 }
 
 .phone-form .phone-input{
@@ -66,10 +69,13 @@
 }
 
 .sign-button {
+  height: 50px;
   border: 1px solid;
   font-weight: bold;
   width: 98px;
   background: white;
+  line-height: 50px;
+  font-size: 16px;
   color: var(--active-btn-color);
   border-color: var(--active-btn-color);
 }
@@ -124,7 +130,7 @@
   line-height: 18px;
   margin: 4px 0;
   position: relative;
-  letter-spacing: -0.1px;
+  /* letter-spacing: -0.1px; */
   color: #898989; 
 }
 
@@ -203,8 +209,29 @@ input[type=checkbox]:checked + label:before {
   line-height: 24px;
   letter-spacing: -0.6px;
   padding: 12px 14px;
+  background-color: #fff;
   border-color: var(--input-border-color);
 }
+
+.disabled-input::placeholder{
+  color: #8e929f !important;
+}
+
+.sub-phone-form .phone-input {
+  position: relative;
+}
+
+.sub-phone-form .phone-input .timer {
+  position: absolute;
+  top: 52%;
+  transform: translateY(-50%);
+  right: 18px;
+  font-size: 14px;
+  line-height: 24px;
+  letter-spacing: -0.4px;
+  color:red;
+}
+
 
 .text-input::placeholder {
   color: #bbb;
@@ -240,6 +267,7 @@ ul li::before {
   font-size: 14px;
   line-height: 22px;
   letter-spacing: -0.4px;
+  width: 328px !important;
 }
 
 .my-15 {
@@ -271,4 +299,14 @@ ul li::before {
 }
 .t-center {
   text-align: center;
+}
+
+.prevent-event {
+  pointer-events: none;
+}
+
+.display-none {
+  width: 0px;
+  height: 0px;
+  overflow: hidden;
 }

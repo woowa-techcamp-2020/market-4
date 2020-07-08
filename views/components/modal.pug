@@ -1,0 +1,15 @@
+html
+  head
+    block style
+      link(rel='stylesheet' href='/stylesheets/modal.css')
+  body
+    block modal
+      .modal-container
+        .modal-area
+          .modal-contents
+            .modal-content
+              strong 인증번호를 발송했습니다.
+              p
+                | 휴대폰 SMS 발송된 인증번호를 확인해 주세요.
+            .modal-confirm#modal-confirm 확인
+script(src='/javascripts/modal/index.js')
