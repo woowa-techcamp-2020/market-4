@@ -1,3 +1,4 @@
+const $ = document.querySelector.bind(document);
 const $assign_button = $(".assign-input");
 const $timer = $('.timer');
 const $sub_form = $('.sub-phone-form');

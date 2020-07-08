@@ -81,5 +81,3 @@ const validator = new function() {
     };
   }
 }
-
-export default validator;

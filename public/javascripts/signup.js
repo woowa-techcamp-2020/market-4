@@ -1,4 +1,3 @@
-
 const $ = document.querySelector.bind(document);
 // // class 쓰지말고 함수 쓰기
 
@@ -316,7 +315,7 @@ class SignUp {
   }
 }
 
-const validator = new Validator();
+// const validator = new Validator();
 const signUp = new SignUp();
 
 
