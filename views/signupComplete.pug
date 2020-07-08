@@ -1,0 +1,50 @@
+doctype html
+html(lang="en")
+  head
+    meta(charset="UTF-8")
+    meta(name="viewport" content="width=device-width, initial-scale=1.0")
+    title Document
+  link(rel="stylesheet" href="/stylesheets/_common.css")
+  link(rel="stylesheet" href="/stylesheets/signupComplete.css")
+  link(rel="stylesheet" href="")
+  body
+    .complete-area
+      .complete-wrap
+        .content
+          .complete-container
+            .complete-container-title
+              a(href="/")
+                img(src="/images/logo-ceo.png" alt="")
+              h1 회원이 되셨습니다.
+            .main-link
+              a(href="/")
+                | 메인으로 
+                i.fas.fa-arrow-right
+            .complete-info
+              ul.info-box
+                li
+                  span 이름
+                  span #{name}
+                li
+                  span 아이디
+                  span #{userid}
+                li
+                  span 이메일
+                  span #{email}
+                li
+                  span 휴대폰
+                  span #{phone}
+              p.modify-link
+                | 위 정보는 
+                a(href="") 내 정보 관리
+                | 에서 수정하실 수 있습니다.
+        .footer
+          .footer-link
+            a(href="https://mart.baemin.com/")
+              img(src="/images/login-logo-mart.png" alt="")
+            a(href="https://academy.baemin.com/?utm_source=ceopage&utm_medium=link&utm_campaign=ongoing&utm_content=logo_login")
+              img(src="/images/login-logo-academy.png" alt="")
+            a(href="https://note.baemin.com/")
+              img(src="/images/login-logo-jangbu.png" alt="")
+          p.copyright © Woowa Brothers Corp.
+  script(src="https://kit.fontawesome.com/a076d05399.js")
