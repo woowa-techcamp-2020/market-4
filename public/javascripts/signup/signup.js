@@ -206,3 +206,10 @@ listener.click($('.sign-up-confirm-btn'), async (element) => {
 
 });
 
+// 페이지 이동 시 alert 창 띄우기
+
+window.onbeforeunload = function(e) {
+  var dialogText = 'Dialog text here';
+  e.returnValue = dialogText;
+  return dialogText;
+};
