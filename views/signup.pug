@@ -2,11 +2,9 @@ doctype html
 head
   meta(charset='UTF-8')
   meta(name='viewport' content='width=device-width, initial-scale=1.0')
-  title Document
+  title 배민사장님광장
   link(rel='stylesheet' href='/stylesheets/signup.css')
-  
-  script(type='module' src='/javascripts/validator.js')
-
+  script(src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js")
 .sign-up-area.d-flex
   .sign-up-container.d-flex
     .image-wrapper.d-flex
@@ -18,15 +16,15 @@ head
       .input-form.mt-10
         input.sign-up-input.text-input(name='password' type='password' placeholder='비밀번호* (영문+숫자, 8~20자)' maxlength='20')
       .input-form.mt-10
-        input.sign-up-input.text-input(id="check-password" type='password' placeholder='비밀번호 재확인*' maxlength='20')
+        input.sign-up-input.text-input(name="check_password" type='password' placeholder='비밀번호 재확인*' maxlength='20')
       .email-form.d-flex.mt-10
         .email-input
           input.sign-up-input.text-input(name='email_id' placeholder='이메일 앞자리*')
-        .t-center.at @
+        .t-center.at(style='color: black !important') @
         .email-input
           input.sign-up-input.text-input.prevent-event(name='email_domain' placeholder='이메일 뒷자리*')
       .email-select.mt-10
-        select.select-input(onChange="changeSelect()")
+        select.select-input
           option(value='', selected) 이메일 선택
           option(value='naver.com') naver.com
           option(value='hanmail.com') hanmail.com
@@ -39,56 +37,49 @@ head
       .phone-form.d-flex.mt-10
         .phone-input
           input.sign-up-input.text-input(name='phone' placeholder='휴대폰*' maxlength='11')
-        button.sign-button.phone-button(disabled='true' type="button") &#xC778;&#xC99D;&#xBC1B;&#xAE30;
+        button.sign-button.phone-button(disabled type="button") 인증받기
       .phone-form.sub-phone-form.d-flex.mt-10.display-none
         .phone-input
-          input.sign-up-input.text-input.assign-input(placeholder='인증번호 6자리 입력' maxlength='6')
+          input.sign-up-input.text-input.assign-input(name="check_num" placeholder='인증번호 6자리 입력' maxlength='6')
           .timer 2:00
         button.sign-button.assign-button(type="button") 확인
       .description-wrapper
         ul
-          li.description  &#xC778;&#xC99D;&#xBC88;&#xD638; &#xC804;&#xC1A1;&#xC740; &#xD1B5;&#xC2E0;&#xC0AC;&#xC5D0; &#xB530;&#xB77C; &#xCD5C;&#xB300; 1&#xBD84;&#xAE4C;&#xC9C0; &#xC18C;&#xC694;&#xB420; &#xC218; &#xC788;&#xC2B5;&#xB2C8;&#xB2E4;.
-          li.description  &#xC778;&#xC99D;&#xBC88;&#xD638;&#xAC00; &#xB3C4;&#xCC29;&#xD558;&#xC9C0; &#xC54A;&#xC744; &#xACBD;&#xC6B0; &apos;&#xC778;&#xC99D;&#xBC88;&#xD638; &#xC7AC;&#xC804;&#xC1A1;&apos;&#xC744; &#xB20C;&#xB7EC;&#xC8FC;&#xC138;&#xC694;.
+          li.description  인증번호 전송은 통신사에 따라 최대 1분까지 소요될 수 있습니다.
+          li.description  인증번호가 도착하지 않을 경우 '인증번호 재전송'을 눌러주세요.
       .check-optional.d-flex
-        input#check-optional-input(type='checkbox' onChange='address_box_check()')
-        label(for='check-optional-input') &#xC120;&#xD0DD; &#xC815;&#xBCF4;&#xB97C; &#xC785;&#xB825;&#xD558;&#xC2DC;&#xACA0;&#xC5B4;&#xC694;?
-        a.view-desc(target='blank' href='https://ceo.baemin.com/#/policy/history?position=collectionAndUsageNormal') &#xB0B4;&#xC6A9;&#xBCF4;&#xAE30;
+        input#check-optional-input(type='checkbox')
+        label(for='check-optional-input') 선택 정보를 입력하시겠어요?
+        a.view-desc(target='blank' href='https://ceo.baemin.com/#/policy/history?position=collectionAndUsageNormal') 내용보기
       .postcode-form.phone-form.d-flex
         .phone-input
-          input.sign-up-input.text-input.prevent-event.disabled-input(name='postcode' placeholder='우편번호')
-        button.sign-button(disabled='true' type="button") &#xC8FC;&#xC18C;&#xCC3E;&#xAE30;
+          input.sign-up-input.text-input.disabled-input(readonly name='postcode' placeholder='우편번호')
+        button.sign-button#find-postcode(disabled type="button") 주소찾기
       .input-form.mt-10
-        input.sign-up-input.text-input.prevent-event.disabled-input(name='address1' placeholder='주소')
+        input.sign-up-input.text-input.disabled-input(readonly name='address1' placeholder='주소')
       .input-form.mt-10
         input.sign-up-input.text-input.prevent-event.disabled-input(name='address2' placeholder='상세 주소')
       .admit-form
         .mt-15.d-flex
-          input#all(type='checkbox' onChange="check_all()")
-          label.all(for='all') &#xC804;&#xCCB4; &#xC57D;&#xAD00;&#xC5D0; &#xB3D9;&#xC758;&#xD569;&#xB2C8;&#xB2E4;
+          input#all(type='checkbox')
+          label.all(for='all') 전체 약관에 동의합니다
         .mt-25.d-flex
-          input#essential(type='checkbox', onChange='check_essential()')
-          label(for='essential') &#xD544;&#xC218; &#xD56D;&#xBAA9;&#xC5D0; &#xB3D9;&#xC758;&#xD569;&#xB2C8;&#xB2E4;.
+          input#essential(type='checkbox' name='essential')
+          label(for='essential') 필수 항목에 동의합니다.
         .check-link.d-flex
-          a(target='blank' href='https://ceo.baemin.com/#/policy/history?position=terms') &#xBC30;&#xBBFC;&#xC0AC;&#xC7A5;&#xB2D8;&#xAD11;&#xC7A5; &#xC774;&#xC6A9;&#xC57D;&#xAD00;
-          a(target='blank' href='https://ceo.baemin.com/#/policy/history?position=collectionAndUsageNormal') &#xAC1C;&#xC778;&#xC815;&#xBCF4; &#xC218;&#xC9D1;&#xC774;&#xC6A9; &#xB3D9;&#xC758;
+          a(target='blank' href='https://ceo.baemin.com/#/policy/history?position=terms') 배민사장님광장 이용약관
+          a(target='blank' href='https://ceo.baemin.com/#/policy/history?position=collectionAndUsageNormal') 개인정보 수집이용 동의
         .mt-15.d-flex
-          input#receive_optional(name='advcheck' type='checkbox' onChange='check_ad()')
-          label(for='receive_optional') &#xAD11;&#xACE0;&#xC131; &#xC815;&#xBCF4; &#xC218;&#xC2E0; &#xB3D9;&#xC758; (&#xC120;&#xD0DD;)
+          input#receive_optional(name='advcheck' type='checkbox')
+          label(for='receive_optional') 광고성 정보 수신 동의 (선택)
         .check-link.d-flex
-          | &#xBC30;&#xBBFC;&#xC0AC;&#xC7A5;&#xB2D8;&#xAD11;&#xC7A5; &#xD68C;&#xC6D0;&#xC5D0;&#xAC8C; &#xC81C;&#xACF5;&#xD558;&#xB294; &#xC11C;&#xBE44;&#xC2A4;&#xC758; &#xAD11;&#xACE0;&#xC131; &#xC815;&#xBCF4;&#xB97C; &#xC218;&#xC2E0;&#xD569;&#xB2C8;&#xB2E4;.
+          | 배민사장님광장 회원에게 제공하는 서비스의 광고성 정보를 수신합니다.
         .d-flex.my-15.description-wrapper
           ul
             li.description
-              | &#xB9CC; 14&#xC138; &#xC774;&#xC0C1; &#xD68C;&#xC6D0;&#xB9CC; &#xAC00;&#xC785; &#xAC00;&#xB2A5;&#xD569;&#xB2C8;&#xB2E4;.
-          a.view-desc(target='blank' style='padding: 1px 4px') &#xB0B4;&#xC6A9;&#xBCF4;&#xAE30;
+              | 만 14세 이상 회원만 가입 가능합니다.
+          a.view-desc(target='blank' style='padding: 1px 4px') 내용보기
         .input-form
           button.sign-up-confirm-btn.btn(type='button') 가입 완료
 include ./components/modal
-//- script(src='/javascripts/signup/signup.js')
-//- script(src='/javascripts/signup/validator.js')
-//- script(src='/javascripts/signup/email.js')
-//- script(src='/javascripts/signup/term.js')
-//- script(src='/javascripts/signup/address.js')
-script( src='/javascripts/validator.js')
-script(type='module' src='/javascripts/signup.js')
-script(type='module' src='/javascripts/signup/phone.js')
+script(type='module' src='/javascripts/signup/signup.js')

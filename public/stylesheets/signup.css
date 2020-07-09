@@ -80,7 +80,7 @@
   border-color: var(--active-btn-color);
 }
 
-.sign-button[disabled='true'] {
+.sign-button[disabled] {
   border-color: #ccc !important;
   color: #bbc0cd !important;
 }
@@ -223,8 +223,8 @@ input[type=checkbox]:checked + label:before {
 
 .sub-phone-form .phone-input .timer {
   position: absolute;
-  top: 52%;
-  transform: translateY(-50%);
+  top: 16px;
+  /* transform: translateY(-50%); */
   right: 18px;
   font-size: 14px;
   line-height: 24px;
@@ -268,6 +268,10 @@ ul li::before {
   line-height: 22px;
   letter-spacing: -0.4px;
   width: 328px !important;
+}
+
+input:-internal-autofill-selected {
+  background-color: white !important;
 }
 
 .my-15 {

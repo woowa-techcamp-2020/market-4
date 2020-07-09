@@ -3,8 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "node ./bin/www",
-    "bstart": "babel-node bin/www"
+    "start": "babel-node ./bin/www"
   },
   "dependencies": {
     "cookie-parser": "~1.4.4",
