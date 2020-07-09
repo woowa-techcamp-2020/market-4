@@ -1,7 +1,9 @@
 import $fetch from './fetch.js';
 
+let pw = null;
+let ph = false;
+
 const validator = new function() {
-  this.pw = null;
   this.userid = async function(value) {
     const check = /^[\_\-a-z0-9]{4,20}$/;
     if (value.length === 0) {
@@ -18,16 +20,16 @@ const validator = new function() {
     if (value.length < 8 || !check.test(value)) {
       return this.reject('비밀번호는 영문과 숫자를 포함하여 8~20자로 입력해 주세요.');
     } else {
-      this.pw = value;
+      pw = value;
       return this.resolve();
     }
   }
 
   this.check_password = function(value1) {
-    if(!this.pw) return this.reject('비밀번호 확인을 위해 한번 더 입력해 주세요');
+    if(!pw) return this.reject('비밀번호 확인을 위해 한번 더 입력해 주세요');
     if (value1.length === 0 && this.password.length === 0) {
       return this.reject('비밀번호 확인을 위해 한번 더 입력해 주세요');
-    } else if (value1 === this.pw) {
+    } else if (value1 === pw) {
       return this.resolve();
     } else {
       return this.reject('위 비밀번호와 일치하지 않습니다. 다시 입력해 주세요.');
@@ -111,10 +113,19 @@ const validator = new function() {
 
   this.assign_num = function(value) {
     if (value.length === 6) {
+      ph = true;
       return this.resolve();
      }  else {
       return this.reject('인증번호를 확인해 주세요.');
      }
+  }
+
+  this.confirm_number = function(value) {
+    if (ph) {
+      return this.resolve();
+    } else {
+      return this.reject('휴대폰 번호를 확인해 주세요.');
+    }
   }
 
   this.resolve = function(message = '') {

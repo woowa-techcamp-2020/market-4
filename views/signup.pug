@@ -4,7 +4,7 @@ head
   meta(name='viewport' content='width=device-width, initial-scale=1.0')
   title 배민사장님광장
   link(rel='stylesheet' href='/stylesheets/signup.css')
-  //- link(ref='shortcut')
+  link(rel="shortcut icon" href="/images/favicon.ico")
   script(src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js")
 .sign-up-area.d-flex
   .sign-up-container.d-flex
@@ -59,7 +59,7 @@ head
       .input-form.mt-10
         input.sign-up-input.text-input.disabled-input(readonly name='address1' placeholder='주소')
       .input-form.mt-10
-        input.sign-up-input.text-input.prevent-event.disabled-input-color(name='address2' placeholder='상세 주소')
+        input.sign-up-input.text-input.prevent-event.disabled-input(name='address2' placeholder='상세 주소')
       .admit-form
         .mt-15.d-flex
           input#all(type='checkbox')

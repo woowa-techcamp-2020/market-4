@@ -213,7 +213,7 @@ input[type=checkbox]:checked + label:before {
   border-color: var(--input-border-color);
 }
 
-.disabled-input-color::placeholder{
+.disabled-input::placeholder{
   color: #8e929f !important;
 }
 

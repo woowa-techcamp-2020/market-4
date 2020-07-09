@@ -2,7 +2,7 @@
 import listener from './listener.js';
 import timer from './timer.js';
 import check from './checkSignup.js';
-import {textMessage, errorElement, addError} from './util.js';
+import {textMessage, errorElement, addError, resetError} from './util.js';
 import $fetch from '../fetch.js';
 
 const $ = document.querySelector.bind(document);
@@ -126,7 +126,7 @@ listener.change($('select'), (element) => {
   const email_domain =  $("input[name='email_domain']");
   const select =  $('select').options[$('select').selectedIndex];
   email_domain.value = select.value;
-  addError(email_domain, {success: true}, $("input[name='email_id']"));
+  resetError(email_domain, {success: true}, $("input[name='email_id']"));
   if(select.textContent === '직접입력') {
     email_domain.classList.remove('prevent-event');
     email_domain.classList.remove('email-form');
@@ -175,10 +175,9 @@ listener.click($('.assign-button'), element => {
 
 
 listener.click($('.sign-up-confirm-btn'), async (element) => {
-  // element.preventDefault();
+  $('.sign-up-confirm-btn').setAttribute('disabled', true);
   let confirm = true;
   const $form = $('form');
-
   const form = {};
   await Object.values($form.elements).forEach(async (field) => {
     if(field.name !== '') {
@@ -191,6 +190,10 @@ listener.click($('.sign-up-confirm-btn'), async (element) => {
     }
   });
 
+  if (!check.confirm_number($(`input[name='phone']`))) {
+    confirm = false;
+  }
+
   if(confirm) {
     const res = await $fetch.sendForm(form);
     if (res.success) {
@@ -200,16 +203,26 @@ listener.click($('.sign-up-confirm-btn'), async (element) => {
       location.href='/signup';
     }
   } else {
-    //
     console.log('fail');
   }
+  $('.sign-up-confirm-btn').removeAttribute('disabled');
 
 });
 
 // 페이지 이동 시 alert 창 띄우기
+// window.onunload = function(e) {
+//   console.log(e);
+//   if(document.readyState=="complete"){
+//     console.log('새로고침')
+//     //새로고침
 
-window.onbeforeunload = function(e) {
-  var dialogText = 'Dialog text here';
-  e.returnValue = dialogText;
-  return dialogText;
-};
+// } else if(document.readyState=="loading"){
+//   console.log('페이지 이동')
+//     //다른 페이지 이동
+
+// }
+//   // console.log(self);
+//   var dialogText = 'Dialog text here';
+//   e.returnValue = dialogText;
+//   return dialogText;
+// };
