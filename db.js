@@ -108,6 +108,8 @@ class MemberRepository {
     async confirmUser(userid, password) {
         const query = `SELECT * from members WHERE userid="${userid}"`;
         const result = await this.runQuery(query);
+        if(!result) return false;
+        
         const comparisonPwd = await convertPasswordWithSalt(password, result.salt);
         
         if(result.password === comparisonPwd) return result;
@@ -116,8 +118,8 @@ class MemberRepository {
 }
 
 function init() {
-    const db = new AppDAO(LOCAL_DB);
-    // const db = new AppDAO(MEMORY_DB);
+    // const db = new AppDAO(LOCAL_DB);
+    const db = new AppDAO(MEMORY_DB);
     const memberDAO = new MemberRepository(db);
     memberDAO.createTable().then(async () => {
         // const {password, salt} = await makePasswordWithSalt("password");
