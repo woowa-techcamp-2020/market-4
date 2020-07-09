@@ -13,6 +13,11 @@
     display : flex;
     align-items: center;
 }
+.login-not {
+    display: flex;
+    width: 165px;
+    justify-content: space-between;
+}
 .login-not, .login-not a {
     text-decoration: none;
     color: #8e929f;
@@ -37,7 +42,7 @@
     margin-top : 10px;
 }
 .login-etc {
-    margin : 8px 0px 30px;
+    margin : 15px 0px 30px;
     display : flex;
     justify-content: space-between;
 }
@@ -56,7 +61,7 @@
 }
 
 .login-container-title {
-    margin: 0 0 25px;
+    margin: 0 0 15px;
     display: flex;
     justify-content: center;
 }
@@ -65,6 +70,7 @@
     height: 40px;
 }
 .login-message {
+    height:21px;
     padding-bottom: 6px;
     font-size: 12px;
     color: #f45452;
@@ -84,4 +90,59 @@
     color: #fff;
     background-color: #1a7cff;
     border: none;
+}
+
+
+.sign-up-form .check-optional {
+    padding-top: 3px;
+    /* height: 28px; */
+}  
+
+  
+.admit-form .all {
+    font-size: 16px;
+    line-height: 25px;
+    letter-spacing: -0.4px;
+    color: #212329;
+    font-weight: bold;
+}
+
+input[type=checkbox] {  
+    display: none;  
+}
+
+input[type=checkbox] + label{
+    /* display: inline-block;   */
+    cursor: pointer;  
+    position: relative;  
+    padding-left: 37px;  
+    font-size: 14px;
+    letter-spacing: -0.4px;
+    line-height: 24px;
+    color: #212329;
+}
+  
+input[type=checkbox]+ label:before {     
+    top: -4px;
+    content: "";  
+    /* display: inline-block;   */
+    width: 24px;  
+    height: 24px;  
+    margin-right: 10px;  
+    position: absolute;  
+    left: 0;  
+    /* bottom: 2px;   */
+    border-radius: 3px; 
+    border: 1px solid;
+    border-color: var(--input-border-color);
+}
+input[type=checkbox]:checked + label:before { 
+    background: url(/images/checkbox.png) no-repeat;
+    background-position: -90px 0;
+    background-size: 120px 25px;
+    font-size: 18px; 
+    font-weight:800; 
+    color: #fff;  
+    text-align: center;  
+    line-height: 18px;  
 }
