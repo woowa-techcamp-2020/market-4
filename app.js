@@ -4,7 +4,7 @@ const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 
-const dotenv = require('ditenv');
+const dotenv = require('dotenv');
 
 const indexRouter = require('./routes/index');
 const signupRouter = require('./routes/signup');
@@ -26,7 +26,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-const SECONDS = 2000;
+const SECONDS = 1000 * 3;
 
 app.use(session({
   resave: false,

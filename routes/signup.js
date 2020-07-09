@@ -11,8 +11,8 @@ router.post('/', (req, res, next) => {
 
 router.get('/complete', (req, res, next) => {
     // const {name, userid, email, phone} = req.session.userInfo;
-    
-    const [name, userid, email, phone] = ["가나다", "userid", "email@email.com", "010-2345-2345"];
+    const {name, userid, email, phone} = req.session;
+    // const [name, userid, email, phone] = ["가나다", "userid", "email@email.com", "010-2345-2345"];
     res.render('signupComplete', {name, userid, email, phone});
     // res.render('signupComplete');
 });
