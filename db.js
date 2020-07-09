@@ -84,10 +84,17 @@ class MemberRepository {
     // [userid, password, name, email, phone, postcode, address1, address2, advcheck]
     addUser(userInfo) {
         const INSERT_MEMBER_QUERY = `INSERT INTO members(userid, password, salt, name, email, phone, postcode, address1, address2, advcheck) values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`;
-        return this.dao.run(INSERT_MEMBER_QUERY, userInfo).then(res => {
-            console.log("[addUser] : " + res);
-            return res;
-        });
+        return new Promise((resolve, reject) => {
+            try {
+                this.dao.run(INSERT_MEMBER_QUERY, userInfo).then(res => {
+                    // console.log("[addUser] : " + res);
+                    // return res;
+                    resolve(res);
+                });
+            } catch (error) {
+                reject(error);
+            }
+        })
     }
 
     deleteTable() {
