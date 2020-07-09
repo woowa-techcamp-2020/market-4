@@ -1,0 +1,86 @@
+doctype html
+head
+  meta(charset='UTF-8')
+  meta(name='viewport' content='width=device-width, initial-scale=1.0')
+  title 배민사장님광장
+  link(rel='stylesheet' href='/stylesheets/signup.css')
+  //- link(ref='shortcut')
+  script(src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js")
+.sign-up-area.d-flex
+  .sign-up-container.d-flex
+    .image-wrapper.d-flex
+      img.title-image(src='https://ceo.baemin.com/cdn/ceo-moon/static/desktop/main/logo-ceo.svg?ver=37ff4fc80c3dfb2e2c76b41825e4c4da')
+    form.sign-up-form
+      p.desc-info 필수 정보를 입력해주세요.
+      .input-form
+        input.sign-up-input.text-input(name='userid' type='text' placeholder='아이디* (4~20자)' maxlength='20')
+      .input-form.mt-10
+        input.sign-up-input.text-input(name='password' type='password' placeholder='비밀번호* (영문+숫자, 8~20자)' maxlength='20')
+      .input-form.mt-10
+        input.sign-up-input.text-input(name="check_password" type='password' placeholder='비밀번호 재확인*' maxlength='20')
+      .email-form.d-flex.mt-10
+        .email-input
+          input.sign-up-input.text-input(name='email_id' placeholder='이메일 앞자리*')
+        .t-center.at(style='color: black !important') @
+        .email-input
+          input.sign-up-input.text-input.prevent-event(name='email_domain' placeholder='이메일 뒷자리*')
+      .email-select.mt-10
+        select.select-input
+          option(value='', selected) 이메일 선택
+          option(value='naver.com') naver.com
+          option(value='hanmail.com') hanmail.com
+          option(value='nate.com') nate.com
+          option(value='hotmail.com') hotmail.com
+          option(value='gmail.com') gmail.com
+          option(value='') 직접입력
+      .input-form.mt-10
+        input.sign-up-input.text-input(name='name' placeholder='이름*')
+      .phone-form.d-flex.mt-10
+        .phone-input
+          input.sign-up-input.text-input(name='phone' placeholder='휴대폰*' maxlength='11')
+        button.sign-button.phone-button(disabled type="button") 인증받기
+      .phone-form.sub-phone-form.d-flex.mt-10.display-none
+        .phone-input
+          input.sign-up-input.text-input.assign-input(name="check_num" placeholder='인증번호 6자리 입력' maxlength='6')
+          .timer 2:00
+        button.sign-button.assign-button(type="button") 확인
+      .description-wrapper
+        ul
+          li.description  인증번호 전송은 통신사에 따라 최대 1분까지 소요될 수 있습니다.
+          li.description  인증번호가 도착하지 않을 경우 '인증번호 재전송'을 눌러주세요.
+      .check-optional.d-flex
+        input#check-optional-input(type='checkbox')
+        label(for='check-optional-input') 선택 정보를 입력하시겠어요?
+        a.view-desc(target='blank' href='https://ceo.baemin.com/#/policy/history?position=collectionAndUsageNormal') 내용보기
+      .postcode-form.phone-form.d-flex
+        .phone-input
+          input.sign-up-input.text-input.disabled-input(readonly name='postcode' placeholder='우편번호')
+        button.sign-button#find-postcode(disabled type="button") 주소찾기
+      .input-form.mt-10
+        input.sign-up-input.text-input.disabled-input(readonly name='address1' placeholder='주소')
+      .input-form.mt-10
+        input.sign-up-input.text-input.prevent-event.disabled-input(name='address2' placeholder='상세 주소')
+      .admit-form
+        .mt-15.d-flex
+          input#all(type='checkbox')
+          label.all(for='all') 전체 약관에 동의합니다
+        .mt-25.d-flex
+          input#essential(type='checkbox' name='essential')
+          label(for='essential') 필수 항목에 동의합니다.
+        .check-link.d-flex
+          a(target='blank' href='https://ceo.baemin.com/#/policy/history?position=terms') 배민사장님광장 이용약관
+          a(target='blank' href='https://ceo.baemin.com/#/policy/history?position=collectionAndUsageNormal') 개인정보 수집이용 동의
+        .mt-15.d-flex
+          input#receive_optional(name='advcheck' type='checkbox')
+          label(for='receive_optional') 광고성 정보 수신 동의 (선택)
+        .check-link.d-flex
+          | 배민사장님광장 회원에게 제공하는 서비스의 광고성 정보를 수신합니다.
+        .d-flex.my-15.description-wrapper
+          ul
+            li.description
+              | 만 14세 이상 회원만 가입 가능합니다.
+          a.view-desc(target='blank' style='padding: 1px 4px') 내용보기
+        .input-form
+          button.sign-up-confirm-btn.btn(type='button') 가입 완료
+include ./components/modal
+script(type='module' src='/javascripts/signup/signup.js')

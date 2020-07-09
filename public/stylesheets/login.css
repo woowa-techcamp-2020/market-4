@@ -1,0 +1,87 @@
+.login-area {
+    display: flex;
+    width: 100%;
+    height: 960px;
+    justify-content: center;
+}
+.login-wrap {
+    position : relative;
+    height : 100%;
+}
+.login-wrap .content {
+    height : 900px;
+    display : flex;
+    align-items: center;
+}
+.login-not, .login-not a {
+    text-decoration: none;
+    color: #8e929f;
+    font-size: 12px;
+    line-height: 20px;
+    font-weight: 500;
+}
+.login-wrap.footer {
+    position : absolute;
+    bottom : 0px;
+}
+.login-form .input-id input, .login-form .input-password input{
+    position: relative;
+    padding: 12px 16px 12px 12px;
+    border: 1px solid #d7dbe6;
+    background-color: #fff;
+    font-size: 16px;
+    width:100%;
+    box-sizing: border-box;
+}
+.login-form .input-password input {
+    margin-top : 10px;
+}
+.login-etc {
+    margin : 8px 0px 30px;
+    display : flex;
+    justify-content: space-between;
+}
+.footer {
+    color: #8e929f;
+    text-align: center;
+    font-size: 12px;
+}
+.footer .footer-link > a > img {
+    height:18px;
+}
+.login-container {
+    width:330px;
+    justify-content:center;
+    flex-direction: column;   
+}
+
+.login-container-title {
+    margin: 0 0 25px;
+    display: flex;
+    justify-content: center;
+}
+.login-container-title img{
+    width: 272px;
+    height: 40px;
+}
+.login-message {
+    padding-bottom: 6px;
+    font-size: 12px;
+    color: #f45452;
+}
+.login-area .footer .footer-link {
+    display: flex;
+    justify-content: space-around;
+}
+
+.login-submit-btn {
+    cursor: pointer;
+    height: 70px;
+    padding: 22px 0 20px;
+    width: 100%;
+    font-size: 18px;
+    font-weight: 600;
+    color: #fff;
+    background-color: #1a7cff;
+    border: none;
+}

@@ -3,20 +3,18 @@ const express = require('express');
 const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
+const favicon = require('serve-favicon');
+
+const dotenv = require('dotenv');
 
 const indexRouter = require('./routes/index');
-// const signupRouter = require('./router/signup');
+const signupRouter = require('./routes/signup');
 const loginRouter = require('./routes/login');
 
-// DB 관련
-const MEMORY_DB = ':memory:';
-const LOCAL_DB = './local.db';
-const {Db, MemberRepository} = require('./db');
+const session = require('express-session');
+const FileStore = require('session-file-store')(session);
 
-const db = await new Db(MEMORY_DB);
-const memberRepository = await new MemberRepository(Db);
-await memberRepository.createTable();
-
+dotenv.config();
 var app = express();
 
 app.set('views', path.join(__dirname, 'views'));
@@ -27,15 +25,26 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(favicon(path.join(__dirname,'public','images','favicon.ico')));
+
+
+const SECONDS = 1000 * 5;
+
+app.use(session({
+  resave: false,
+  saveUninitialized: true,
+  store : new FileStore(),
+  secret : process.env.SESSION_SECRET,
+  cookie : {maxAge : SECONDS}
+}));
 
 app.use('/', indexRouter);
-// app.use('/signup', signupRouter);
+app.use('/signup', signupRouter);
 app.use('/login', loginRouter);
 
 app.use(function(req, res, next) {
   next(createError(404));
 });
-
 
 // 에러 처리
 app.use(function(err, req, res, next) {

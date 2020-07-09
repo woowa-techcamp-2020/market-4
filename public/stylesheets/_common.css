@@ -1,0 +1,23 @@
+@import url(http://fonts.googleapis.com/earlyaccess/notosanskr.css); 
+@import url(http://fonts.googleapis.com/css?family=Roboto:400,100,100italic,300,300ita‌​lic,400italic,500,500italic,700,700italic,900italic,900);
+
+:root {
+  --input-border-color: #d7dbe6;
+  --active-btn-color:  #1a7cff;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  /* font-family: 'Roboto', 'Noto Sans KR', sans-serif, '돋움', 'Dotum', helvetica; */
+}
+
+input:focus { 
+  outline: none !important;
+}
+button:focus {
+  outline: none !important;
+}
+select:focus{
+  outline: none !important;
+}
