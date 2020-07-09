@@ -14,7 +14,8 @@ const validator = new function() {
   }
 
   this.password = function (value) {
-    if (value.length < 8) {
+    const check = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,20}$/;
+    if (value.length < 8 || !check.test(value)) {
       return this.reject('비밀번호는 영문과 숫자를 포함하여 8~20자로 입력해 주세요.');
     } else {
       this.pw = value;
