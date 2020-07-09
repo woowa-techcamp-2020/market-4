@@ -2,7 +2,7 @@
 import listener from './listener.js';
 import timer from './timer.js';
 import check from './checkSignup.js';
-import {textMessage, errorElement, addError, resetError} from './util.js';
+import {textMessage, errorElement, addError} from './util.js';
 import $fetch from '../fetch.js';
 
 const $ = document.querySelector.bind(document);
@@ -126,7 +126,7 @@ listener.change($('select'), (element) => {
   const email_domain =  $("input[name='email_domain']");
   const select =  $('select').options[$('select').selectedIndex];
   email_domain.value = select.value;
-  resetError(email_domain, {success: true}, $("input[name='email_id']"));
+  addError(email_domain, {success: true}, $("input[name='email_id']"));
   if(select.textContent === '직접입력') {
     email_domain.classList.remove('prevent-event');
     email_domain.classList.remove('email-form');
