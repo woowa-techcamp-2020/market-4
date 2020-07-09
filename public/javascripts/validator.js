@@ -1,27 +1,32 @@
+import $fetch from './fetch.js';
+
 const validator = new function() {
-  this.userId = async function(value) {
+  this.pw = null;
+  this.userid = async function(value) {
     const check = /^[\_\-a-z0-9]{4,20}$/;
     if (value.length === 0) {
       return this.reject('아이디를 입력해 주세요.');
     } else if (!check.test(value)) {
       return this.reject('아이디는 영소문자와 숫자, 특수기호(_, -)로 4자~20자 사이로 입력해 주세요.');
-    } else {
-      const result = await $fetch(value);
-      return result;
     }
+    const result = await $fetch.checkId(value);
+    return result;
   }
 
   this.password = function (value) {
     if (value.length < 8) {
       return this.reject('비밀번호는 영문과 숫자를 포함하여 8~20자로 입력해 주세요.');
+    } else {
+      this.pw = value;
+      return this.resolve();
     }
-    return this.resolve();
   }
 
-  this.check_password = function(value1, value2) {
-    if (value1.length === 0 && value2.length === 0) {
+  this.check_password = function(value1) {
+    if(!this.pw) return this.reject('비밀번호 확인을 위해 한번 더 입력해 주세요');
+    if (value1.length === 0 && this.password.length === 0) {
       return this.reject('비밀번호 확인을 위해 한번 더 입력해 주세요');
-    } else if (value1 === value2) {
+    } else if (value1 === this.pw) {
       return this.resolve();
     } else {
       return this.reject('위 비밀번호와 일치하지 않습니다. 다시 입력해 주세요.');
@@ -67,6 +72,50 @@ const validator = new function() {
     return this.resolve();
   }
 
+  this.advcheck = function(value) {
+    if (value) {
+      return this.resolve(true);
+    } else {
+      return this.resolve(false);
+    }
+  }
+
+  this.postcode = function(value) {
+    return this.resolve();
+  }
+
+  this.address1 = function(value) {
+    return this.resolve();
+  }
+
+  this.address2 = function(value) {
+    return this.resolve();
+  }
+
+  this.essential = function(value) {
+    if (value) {
+      return this.resolve(true);
+    } else {
+      return this.reject(false);
+    }
+  }
+
+  this.check_num = function(value) {
+    if (value.length > 0) {
+      return this.resolve();
+    } else {
+      return this.reject('인증번호를 입력해 주세요.');
+    }
+  }
+
+  this.assign_num = function(value) {
+    if (value.length === 6) {
+      return this.resolve();
+     }  else {
+      return this.reject('인증번호를 확인해 주세요.');
+     }
+  }
+
   this.resolve = function(message = '') {
     return {
       success: true,
@@ -81,3 +130,5 @@ const validator = new function() {
     };
   }
 }
+
+export default validator;
