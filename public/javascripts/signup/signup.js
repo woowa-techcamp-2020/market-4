@@ -1,7 +1,7 @@
 // import validator from '../validator.js';
 import listener from './listener.js';
 import timer from './timer.js';
-import check from '../checkSignup.js';
+import check from './checkSignup.js';
 import {textMessage, errorElement, addError} from './util.js';
 import $fetch from '../fetch.js';
 

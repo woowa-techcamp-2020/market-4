@@ -15,14 +15,15 @@ html(lang="en")
               a(href="/")
                 img(src="/images/logo-ceo.png" alt="")
             div
+              p.login-message #{msg}
               form.login-form(action="/login" method="post")
                 p.input-id
-                  input(type="text" name="userid" id="" placeholder="아이디")
+                  input(type="text" name="userId" placeholder="아이디")
                 p.input-password
-                  input(type="password" name="password" id="" placeholder="비밀번호")
+                  input(type="password" name="password" placeholder="비밀번호")
                 .login-etc
                   p.id-save
-                    input(type="checkbox" name="userid-save" id="")
+                    input(type="checkbox" name="isSavedUserId")
                     span 아이디 저장
                   p.login-not
                     a(href="") 아이디
@@ -30,7 +31,7 @@ html(lang="en")
                     a(href="") 비밀번호 찾기
                     a(href="") 회원가입
                 p
-                  button.login-submit-btn(type="submit") 로그인
+                  button.login-submit-btn(type="button") 로그인
         .footer
           .footer-link
             a(href="https://mart.baemin.com/")
@@ -40,3 +41,4 @@ html(lang="en")
             a(href="https://note.baemin.com/")
               img(src="/images/login-logo-jangbu.png" alt="")
           p.copyright © Woowa Brothers Corp.
+  script(src="/javascripts/login.js")

@@ -1,3 +1,4 @@
+const {convertPasswordWithSalt, makeSalt, convertPassword} = require('../pwCrypto.js');
 const router = require('express').Router();
 const { db, memberDAO } = require('../db.js');
 import validator from '../public/javascripts/validator.js';
@@ -8,14 +9,20 @@ router.get('/', (req, res, next) => {
 router.post('/', async (req, res, next) => {
     const form = req.body;
     const confirm = await checkform(form);
-    if (confirm) {
-        const arr = [form.userid, form.password, form.name, `${form.email_id}@${form.email_domain}`,
+    if (confirm) {  
+        const {password, salt} = await convertPassword(form.password);
+        const arr = [form.userid, password, salt, form.name, `${form.email_id}@${form.email_domain}`,
             form.phone, form.postcode, form.address1, form.address2, form.advcheck];
         const result = await memberDAO.addUser(arr);
+        // console.log(JSON.stringify(req.session));
+        req.session.userid = form.userid;
+        req.session.name = form.name;
+        req.session.email = `${form.email_id}@${form.email_domain}`;
+        req.session.phone = form.phone;
         res.status(200).json({
             status: true,
             success: true
-        })
+        });
     } else {
         // 형식 잘못됨.
         res.status(200).json({

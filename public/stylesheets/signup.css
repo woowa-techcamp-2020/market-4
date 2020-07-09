@@ -51,7 +51,7 @@
   border-color: var(--input-border-color);
   font-size: 17px;
   -webkit-appearance: none;
-  background: #fff url(https://ceo.baemin.com/cdn/ceo-moon/static/desktop/down-arrow@2x.png?ver=a00037bb636e8fcc0738572e0b99441e) 95% 50% no-repeat;
+  background: #fff url(/images/dropdown.png) 95% 50% no-repeat;
   background-size: 16px 16px;
 }
 
@@ -182,7 +182,7 @@ input[type=checkbox]+ label:before {
   border-color: var(--input-border-color);
 }
 input[type=checkbox]:checked + label:before { 
-  background: url(https://ceo.baemin.com/cdn/ceo-moon/static/mobile/main/sp-inputs.png?ver=ee119bd3333d0c330c74fa3151f21fae) no-repeat;
+  background: url(/images/checkbox.png) no-repeat;
   background-position: -90px 0;
   background-size: 120px 25px;
   font-size: 18px; 

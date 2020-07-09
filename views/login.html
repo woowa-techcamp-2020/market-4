@@ -19,26 +19,29 @@
                     </h1>
                         
                     <div>
+                        <p class="login-message"></p>
+
                         <form class="login-form" action="/login" method="post">
                             <p class="input-id">
-                                <input type="text" name="userid" id="" placeholder="아이디">
+                                <input type="text" name="userid" placeholder="아이디">
                             </p>
                             
                             <p class="input-password">
-                                <input type="password" name="password" id="" placeholder="비밀번호">
+                                <input type="password" name="password" placeholder="비밀번호">
                             </p>
                             <div class="login-etc">
                                 <p class="id-save">
-                                    <input type="checkbox" name="userid-save" id="">
+                                    <input type="checkbox" name="isSavedUserId">
                                     <span>아이디 저장</span>
                                 </p>
 
                                 <p class="login-not">
                                     <a href="">아이디</a> / <a href="">비밀번호 찾기</a> <a href="">회원가입</a>
                                 </p>
+
                             </div>
                             <p>
-                                <button class="login-submit-btn" type="submit">로그인</button>
+                                <button class="login-submit-btn" type="button">로그인</button>
                             </p>
                         </form>
                         
@@ -59,4 +62,5 @@
         </div>
     </div>
 </body>
+<script src="/public/javascripts/login.js"></script>
 </html>

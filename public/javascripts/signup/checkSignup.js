@@ -1,5 +1,5 @@
-import validator from './validator.js';
-import {textMessage, errorElement, addError} from './signup/util.js';
+import validator from '../validator.js';
+import {textMessage, errorElement, addError} from './util.js';
 
 const check = new function() {
   this.userid = async (element) => {

@@ -20,9 +20,6 @@ const addError = function(border_ele, res, msg_ele) {
     msg_ele.parentNode.insertAdjacentHTML('beforeEnd', errorMessage(res.message));
   }
 }
-// const form = {
-
-// };
 
 export {
   textMessage, errorElement, addError
