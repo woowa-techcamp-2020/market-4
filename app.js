@@ -4,11 +4,17 @@ const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 
+const dotenv = require('ditenv');
+
 const indexRouter = require('./routes/index');
 const signupRouter = require('./routes/signup');
 const loginRouter = require('./routes/login');
 
+const session = require('express-session');
+const FileStore = require('session-file-store')(session);
 
+
+dotenv.config();
 var app = express();
 
 app.set('views', path.join(__dirname, 'views'));
@@ -19,6 +25,16 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+
+const SECONDS = 2000;
+
+app.use(session({
+  resave: false,
+  saveUninitialized: true,
+  store : new FileStore(),
+  secret : process.env.SESSION_SECRET,
+  cookie : {maxAge : SECONDS}
+}));
 
 app.use('/', indexRouter);
 app.use('/signup', signupRouter);
