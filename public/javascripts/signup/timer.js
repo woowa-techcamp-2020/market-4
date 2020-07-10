@@ -1,5 +1,4 @@
 const timer = new function() {
-
   this.interval = null;
 
   this.start = function (callback) {

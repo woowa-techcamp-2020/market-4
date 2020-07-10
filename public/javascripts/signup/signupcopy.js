@@ -1,9 +1,8 @@
 // import validator from '../validator.js';
-import listener from './listener.js';
-import timer from './timer.js';
-import check from './checkSignup.js';
-import {textMessage, errorElement, addError} from './util.js';
+// import timer from './timer.js';
+import check from './checkSignupcopy.js';
 import $fetch from '../fetch.js';
+import {textMessage, errorElement, addError, timer} from './utilcopy.js';
 
 const $ = document.querySelector.bind(document);
 
@@ -13,84 +12,82 @@ const postcode = new daum.Postcode({
     $("input[name='address1']").value = data.address;
   }
 });
-listener.click($("input[name='postcode']"),()=> {
+
+
+$("input[name='postcode']").addEventListener('click', () => {
   postcode.open();
-});
+}); 
 
-listener.click($("#find-postcode"),()=> {
+$("input[name='address1']").addEventListener('click', () => {
   postcode.open();
-});
+}); 
 
-listener.click($("input[name='address1']"),()=> {
+$("input[name='address2']").addEventListener('click', () => {
   postcode.open();
+}); 
+
+$("input[name='userid']").addEventListener('focusout', async (ele) => {
+  await check.userid(ele.target);
 });
 
-listener.focusout($("input[name='userid']"), async(element) => {
-  await check.userid(element);
+$("input[name='password']").addEventListener('focusout', (ele) => {
+  check.password(ele.target);
 });
 
-listener.focusout($("input[name='password']"), (element) => {
-  check.password(element);
+$("input[name='check_password']").addEventListener('focusout', (ele) => {
+  check.check_password(ele.target);
 });
 
-listener.focusout($("input[name='check_password']"), (element) => {
-  check.check_password(element);
+$("input[name='email_id']").addEventListener('focusout', (ele) => {
+  check.email_id(ele.target);
 });
 
-listener.focusout($("input[name='email_id']"), (element) => {
-  check.email_id(element);
+$("input[name='email_domain']").addEventListener('focusout', (ele) => {
+  check.email_domain(ele.target);
 });
 
-listener.focusout($("input[name='email_domain']"), (element) => {
-  check.email_domain(element);
+$("input[name='name']").addEventListener('focusout', (ele) => {
+  check.name(ele.target);
 });
 
-listener.focusout($("input[name='name']"), (element) => {
-  check.name(element);
+$("input[name='phone']").addEventListener('focusout', (ele) => {
+  check.phone(ele.target);
 });
 
-listener.focusout($("input[name='phone']"), (element) => {
-  check.phone(element);
-});
+$("input[name='phone']").addEventListener('keyup', (ele) => {
 
-listener.keyup($("input[name='phone']"), (element) => {
-  element.value = element.value.replace(/[^0-9]/g,"");
-  if (element.value.length > 0) {
+  $("input[name='phone']").value = $("input[name='phone']").value.replace(/[^0-9]/g,"");
+  if ($("input[name='phone']").value.length > 0) {
     $('.phone-button').removeAttribute("disabled");
   } else {
     $('.phone-button').setAttribute('disabled', true);
   }
 });
 
-listener.click($("label[for='check-optional-input']"), (element) => {
+$("label[for='check-optional-input']").addEventListener('click', (ele) => {
   const postcode = $("input[name='postcode']");
   const address1 = $("input[name='address1']");
   const address2 = $("input[name='address2']");
   const btn = $("#find-postcode");
   const checked = !($("#check-optional-input").checked);
   if (checked) {
-    postcode.removeAttribute('disabled');
-    address1.removeAttribute('disabled');
-    address2.removeAttribute('disabled');
-    btn.removeAttribute('disabled');
+    address2.classList.remove('prevent-event');
     postcode.classList.remove('disabled-input');
     address1.classList.remove('disabled-input');
     address2.classList.remove('disabled-input');
+    btn.removeAttribute('disabled');
   } else {
-    address1.setAttribute('disabled', true);
-    address2.setAttribute('disabled', true);
-    postcode.setAttribute('disabled', true);
-    btn.setAttribute('disabled', true);
+    address2.classList.add('prevent-event');
     postcode.classList.add('disabled-input');
     address1.classList.add('disabled-input');
     address2.classList.add('disabled-input');
+    btn.setAttribute('disabled', true);
     postcode.value = '';
     address1.value = '';
     address2.value = '';
   }
 });
 
-//
 const $terms_all =  $("label[for='all']");
 const $essential_label = $("label[for='essential']");
 const $ad_label = $("label[for='receive_optional']");
@@ -98,8 +95,7 @@ const all_check = $("#all");
 const essential_check = $("#essential");
 const ad_check = $("#receive_optional");
 
-
-listener.click($terms_all, (element) => {
+$terms_all.addEventListener('click', (ele) => {
   if (!all_check.checked) {
     essential_check.checked = true;
     ad_check.checked = true;
@@ -109,7 +105,7 @@ listener.click($terms_all, (element) => {
   }
 });
 
-listener.click($essential_label, (element) => {
+$essential_label.addEventListener('click', (ele) => {
   if (!essential_check.checked && ad_check.checked) {
     all_check.checked = true;
   } else if (essential_check.checked) {
@@ -117,7 +113,7 @@ listener.click($essential_label, (element) => {
   }
 });
 
-listener.click($ad_label, (element) => {
+$ad_label.addEventListener('click', (ele) => {
   if (!ad_check.checked && essential_check.checked) {
     all_check.checked = true;
   } else if (ad_check.checked) {
@@ -125,29 +121,30 @@ listener.click($ad_label, (element) => {
   }
 });
 
-listener.change($('select'), (element) => {
+$('select').addEventListener('change', (ele) => {
   const email_domain =  $("input[name='email_domain']");
   const select =  $('select').options[$('select').selectedIndex];
   email_domain.value = select.value;
   addError(email_domain, {success: true}, $("input[name='email_id']"));
   if(select.textContent === '직접입력') {
-    email_domain.removeAttribute('disabled');
+    email_domain.classList.remove('prevent-event');
     email_domain.classList.remove('email-form');
   } else {
     email_domain.classList.add('email-form');
-    email_domain.setAttribute('disabled', true)
+    if (!email_domain.classList.contains('prevent-event')) {
+      email_domain.classList.add('prevent-event');
+    }
   }
 });
 
-
-listener.keyup($(".assign-input"), element => {
-  element.value = element.value.replace(/[^0-9]/g,"");
+$(".assign-input").addEventListener('keyup', (ele) => {
+  $(".assign-input").value = $(".assign-input").value.replace(/[^0-9]/g,"");
 });
 
-listener.click($(".phone-button"), ele => {
+$(".phone-button").addEventListener('click', (ele) => {
   $modal.open();
   let count = 120;
-  ele.textContent = '재전송';
+  ele.target.textContent = '재전송';
   $('.sub-phone-form').classList.remove('display-none');
   $('.phone-input').classList.remove('timer');
   timer.start(() => {
@@ -160,22 +157,21 @@ listener.click($(".phone-button"), ele => {
         success: false,
         message: '입력시간을 초과하였습니다.'
       })
-      ele.textContent = '인증 받기';
+      ele.target.textContent = '인증 받기';
       timer.clear();
     }
   });
 });
 
-listener.focusout($('.assign-input'), element => {
-  const res = check.check_num(element);
+$('.assign-input').addEventListener('focusout', (ele) => {
+  const res = check.check_num(ele.target);
 });
 
-listener.click($('.assign-button'), element => {
+$('.assign-button').addEventListener('focusout', (ele) => {
   const res = check.assign_num($('.assign-input'));
 });
 
-
-listener.click($('.sign-up-confirm-btn'), async (element) => {
+$('.sign-up-confirm-btn').addEventListener('click', async (ele) => {
   $('.sign-up-confirm-btn').setAttribute('disabled', true);
   let confirm = true;
   const $form = $('form');
@@ -207,8 +203,8 @@ listener.click($('.sign-up-confirm-btn'), async (element) => {
     console.log('fail');
   }
   $('.sign-up-confirm-btn').removeAttribute('disabled');
-
 });
+
 
 // 페이지 이동 시 alert 창 띄우기
 // window.onunload = function(e) {
