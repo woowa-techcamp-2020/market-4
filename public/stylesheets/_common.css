@@ -13,7 +13,6 @@ body {
 * {
   margin: 0;
   padding: 0;
-  /* font-family: 'Roboto', 'Noto Sans KR', sans-serif, '돋움', 'Dotum', helvetica; */
 }
 
 input:focus { 

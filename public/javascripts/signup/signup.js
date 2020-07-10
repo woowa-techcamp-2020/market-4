@@ -1,10 +1,10 @@
 import postcode from './postcode.js';
 import listener from './listener.js';
-import check from './checkSignup.js';
-import {textMessage, errorElement, addError, Timer} from './util.js';
+import {checkForm, checkError} from './checkSignup.js';
+import {Timer} from './util.js';
 import $fetch from '../fetch.js';
 
-const timer = new Timer();
+const phoneTimer = new Timer();
 const $ = document.querySelector.bind(document);
 
 postcode.oncomplete = function(data) {
@@ -25,31 +25,31 @@ listener.click($("input[name='address1']"),()=> {
 });
 
 listener.focusout($("input[name='userid']"), async(element) => {
-  await check.userid(element);
+  await checkForm.userid(element);
 });
 
 listener.focusout($("input[name='password']"), (element) => {
-  check.password(element);
+  checkForm.password(element);
 });
 
 listener.focusout($("input[name='check_password']"), (element) => {
-  check.check_password(element);
+  checkForm.check_password(element);
 });
 
 listener.focusout($("input[name='email_id']"), (element) => {
-  check.email_id(element);
+  checkForm.email_id(element);
 });
 
 listener.focusout($("input[name='email_domain']"), (element) => {
-  check.email_domain(element);
+  checkForm.email_domain(element);
 });
 
 listener.focusout($("input[name='name']"), (element) => {
-  check.name(element);
+  checkForm.name(element);
 });
 
 listener.focusout($("input[name='phone']"), (element) => {
-  check.phone(element);
+  checkForm.phone(element);
 });
 
 listener.keyup($("input[name='phone']"), (element) => {
@@ -127,7 +127,7 @@ listener.change($('select'), (element) => {
   const email_domain =  $("input[name='email_domain']");
   const select =  $('select').options[$('select').selectedIndex];
   email_domain.value = select.value;
-  addError(email_domain, {success: true}, $("input[name='email_id']"));
+  checkError.add(email_domain, {success: true}, $("input[name='email_id']"));
   if(select.textContent === '직접입력') {
     email_domain.removeAttribute('disabled');
     email_domain.classList.remove('email-form');
@@ -148,28 +148,28 @@ listener.click($(".phone-button"), ele => {
   ele.textContent = '재전송';
   $('.sub-phone-form').classList.remove('display-none');
   $('.phone-input').classList.remove('timer');
-  timer.start(() => {
+  phoneTimer.start(() => {
     count--;
     $('.timer').textContent = `${Math.floor(count / 60)}:${(Math.floor(count % 60)).toString().padStart(2, '0')}`;
     if (count < 0) {
       $('.timer').textContent = '2:00';
       $('.sub-phone-form').classList.add('display-none');
-      errorElement($("input[name='phone']"), {
+      checkError.add($("input[name='phone']"), {
         success: false,
         message: '입력시간을 초과하였습니다.'
       })
       ele.textContent = '인증 받기';
-      timer.clear();
+      phoneTimer.clear();
     }
   }, 1000);
 });
 
 listener.focusout($('.assign-input'), element => {
-  const res = check.check_num(element);
+  const res = checkForm.check_num(element);
 });
 
 listener.click($('.assign-button'), element => {
-  const res = check.assign_num($('.assign-input'));
+  const res = checkForm.assign_num($('.assign-input'));
 });
 
 
@@ -189,7 +189,7 @@ listener.click($('.sign-up-confirm-btn'), async (element) => {
     }
   });
 
-  if (!check.confirm_number($(`input[name='phone']`))) {
+  if (!checkForm.confirm_number($(`input[name='phone']`))) {
     confirm = false;
   }
 
@@ -208,20 +208,3 @@ listener.click($('.sign-up-confirm-btn'), async (element) => {
 
 });
 
-// 페이지 이동 시 alert 창 띄우기
-// window.onunload = function(e) {
-//   console.log(e);
-//   if(document.readyState=="complete"){
-//     console.log('새로고침')
-//     //새로고침
-
-// } else if(document.readyState=="loading"){
-//   console.log('페이지 이동')
-//     //다른 페이지 이동
-
-// }
-//   // console.log(self);
-//   var dialogText = 'Dialog text here';
-//   e.returnValue = dialogText;
-//   return dialogText;
-// };
