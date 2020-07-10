@@ -115,6 +115,8 @@ class MemberRepository {
     async confirmUser(userid, password) {
         const query = `SELECT * from members WHERE userid="${userid}"`;
         const result = await this.runQuery(query);
+        if(!result) return false;
+        
         const comparisonPwd = await convertPasswordWithSalt(password, result.salt);
         
         if(result.password === comparisonPwd) return result;

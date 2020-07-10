@@ -11,11 +11,7 @@ router.get('/', (req, res, next) => {
     if(req.session.isLogined) msg = SUCCESS_MSG;
     else msg = FAIL_MSG;
 
-  } 
-  // else {
-  //   msg = NOT_LOGIN_MSG;
-  // }
-
+  }
   res.render('login', {msg});
 });
 
