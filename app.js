@@ -26,7 +26,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 console.log(__dirname);
 
-const SECONDS = 1000 * 3;
+const SECONDS = 1000 * 5;
 
 app.use(session({
   resave: false,
@@ -43,7 +43,6 @@ app.use('/login', loginRouter);
 app.use(function(req, res, next) {
   next(createError(404));
 });
-
 
 // 에러 처리
 app.use(function(err, req, res, next) {
