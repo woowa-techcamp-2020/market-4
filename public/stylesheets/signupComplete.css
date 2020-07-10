@@ -34,12 +34,14 @@
 }
 
 .modify-link {
-    margin-top:20px;
+    margin-top: 14px;
+    padding-left: 14px;
 }
 .complete-container .main-link a,i{
-    color:blue;
-    font-weight:400;
+    color: var(--active-btn-color);
+    font-weight: 500;
     text-decoration: none;
+    font-size: 18px;
 }
 
 .complete-container-title {
@@ -55,14 +57,14 @@
 }
 
 .complete-info .info-box {
-    margin-top : 20px;
+    margin-top: 16px;
     position: relative;
     outline: 1px solid #dfdede;
     list-style: none;
     padding:20px 20px;
 }
 .complete-info .info-box li {
-    margin-top:20px;
+    margin-top: 16px;
 }
 .complete-info .info-box li:first-child{
     margin-top: 0px;
@@ -72,9 +74,11 @@
 }
 .info-box li span:first-child{
     color:#8e929f;
+    font-weight: 500;
     width:60px;
 }
 .modify-link {
+    font-size: 14px;
     color:#8e929f;
 }
 .modify-link a {
