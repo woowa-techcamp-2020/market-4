@@ -22,8 +22,9 @@
     text-decoration: none;
     color: #8e929f;
     font-size: 12px;
-    line-height: 20px;
+    line-height: 26px;
     font-weight: 500;
+    
 }
 .login-wrap.footer {
     position : absolute;
@@ -82,13 +83,13 @@
 
 .login-submit-btn {
     cursor: pointer;
-    height: 70px;
+    height: 64px;
     padding: 22px 0 20px;
     width: 100%;
     font-size: 18px;
     font-weight: 600;
     color: #fff;
-    background-color: #1a7cff;
+    background-color: var(--active-btn-color);
     border: none;
 }
 
@@ -115,7 +116,7 @@ input[type=checkbox] + label{
     /* display: inline-block;   */
     cursor: pointer;  
     position: relative;  
-    padding-left: 37px;  
+    padding-left: 32px;  
     font-size: 14px;
     letter-spacing: -0.4px;
     line-height: 24px;
@@ -126,8 +127,8 @@ input[type=checkbox]+ label:before {
     top: -4px;
     content: "";  
     /* display: inline-block;   */
-    width: 24px;  
-    height: 24px;  
+    width: 20px;  
+    height: 20px;  
     margin-right: 10px;  
     position: absolute;  
     left: 0;  

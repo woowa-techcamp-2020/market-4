@@ -74,6 +74,7 @@
 }
 .info-box li span:first-child{
     color:#8e929f;
+    font-weight: 500;
     width:60px;
 }
 .modify-link {
