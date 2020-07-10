@@ -1,7 +1,7 @@
 import postcode from './postcode.js';
 import listener from './listener.js';
 import {checkForm, checkError} from './checkSignup.js';
-import {Timer} from './util.js';
+import {Timer} from '../util.js';
 import $fetch from '../fetch.js';
 
 const phoneTimer = new Timer();
