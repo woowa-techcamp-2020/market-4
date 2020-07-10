@@ -5,6 +5,7 @@ const crypto = require('crypto');
  * @param {string} password 
  */
 const convertPasswordWithSalt = (password, salt) => {
+    console.log(`input ====> ${password}, ${salt}`);
     return new Promise((res, rej) => {
         crypto.pbkdf2(password, salt, 14243, 64, 'sha512', (err, key) => {
             if(err) return rej(err);

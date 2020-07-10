@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { db, memberDAO } = require('../db.js');
+const { db, memberDAO } = require("../db/db.js");
 
 const SUCCESS_MSG = "로그인이 되어 있는 상태입니다.";
 const FAIL_MSG = "아이디 또는 비밀번호를 다시 확인해 주세요";

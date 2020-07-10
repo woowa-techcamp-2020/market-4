@@ -32,7 +32,7 @@ app.use(session({
   resave: false,
   saveUninitialized: true,
   store : new FileStore(),
-  secret : process.env.SESSION_SECRET,
+  secret : "asdsadfjkh@#^12412523%@$^@#Q%3lkjfadf",
   cookie : {maxAge : SECONDS}
 }));
 
