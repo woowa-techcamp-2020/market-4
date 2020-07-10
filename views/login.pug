@@ -1,13 +1,8 @@
-doctype html
-html(lang="en")
-  head
-    meta(charset="UTF-8")
-    meta(name="viewport" content="width=device-width, initial-scale=1.0")
-    title 배달의민족 사장님 통합 로그인
-  link(rel="stylesheet" href="/stylesheets/_common.css")
-  link(rel="stylesheet" href="/stylesheets/login.css")
-  body
-    .login-area
+extends layout.pug
+block head
+    link(rel="stylesheet" href="/stylesheets/login.css")
+block content
+  .login-area
       .login-wrap
         .content
           .login-container
@@ -45,4 +40,5 @@ html(lang="en")
             a(href="https://note.baemin.com/")
               img(src="/images/login-logo-jangbu.png" alt="")
           p.copyright © Woowa Brothers Corp.
+block script
   script(type="module" src="/javascripts/login.js")
