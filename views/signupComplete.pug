@@ -1,14 +1,8 @@
-doctype html
-html(lang="en")
-  head
-    meta(charset="UTF-8")
-    meta(name="viewport" content="width=device-width, initial-scale=1.0")
-    title Document
-  link(rel="stylesheet" href="/stylesheets/_common.css")
+extends layout.pug
+block head
   link(rel="stylesheet" href="/stylesheets/signupComplete.css")
-  link(rel="stylesheet" href="")
-  body
-    .complete-area
+block content
+  .complete-area
       .complete-wrap
         .content
           .complete-container
@@ -18,7 +12,7 @@ html(lang="en")
               h1 회원이 되셨습니다.
             .main-link
               a(href="/")
-                | 메인으로 
+                | 메인으로  
                 i.fas.fa-arrow-right
             .complete-info
               ul.info-box
@@ -34,10 +28,11 @@ html(lang="en")
                 li
                   span 휴대폰
                   span #{phone}
-              p.modify-link
-                | 위 정보는 
-                a(href="") 내 정보 관리
-                | 에서 수정하실 수 있습니다.
+              ul.modify-link
+                li
+                  | 위 정보는 
+                  a(href="") 내 정보 관리
+                  | 에서 수정하실 수 있습니다.
         .footer
           .footer-link
             a(href="https://mart.baemin.com/")
@@ -47,4 +42,5 @@ html(lang="en")
             a(href="https://note.baemin.com/")
               img(src="/images/login-logo-jangbu.png" alt="")
           p.copyright © Woowa Brothers Corp.
+block script
   script(src="https://kit.fontawesome.com/a076d05399.js")
