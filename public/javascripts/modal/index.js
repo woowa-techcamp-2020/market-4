@@ -1,6 +1,5 @@
 const $modal = new function () {
-
-  this.$modal = document.querySelector('.modal-area');
+  this.$modal = document.querySelector('#modal-area');
 
   document.querySelector('#modal-confirm').addEventListener('click',(e) => {
     this.close();
