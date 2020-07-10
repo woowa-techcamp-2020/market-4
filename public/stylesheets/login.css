@@ -140,7 +140,7 @@ input[type=checkbox]+ label:before {
 input[type=checkbox]:checked + label:before { 
     background: url(/images/checkbox.png) no-repeat;
     background-position: -90px 0;
-    background-size: 120px 25px;
+    background-size: 118px 21px;
     font-size: 18px; 
     font-weight:800; 
     color: #fff;  
