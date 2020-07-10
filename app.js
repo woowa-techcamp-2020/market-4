@@ -3,8 +3,6 @@ const express = require('express');
 const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
-const favicon = require('serve-favicon');
-
 const dotenv = require('dotenv');
 
 const indexRouter = require('./routes/index');
@@ -25,8 +23,8 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
-app.use(favicon(path.join(__dirname,'public','images','favicon.ico')));
 
+console.log(__dirname);
 
 const SECONDS = 1000 * 5;
 
@@ -34,7 +32,7 @@ app.use(session({
   resave: false,
   saveUninitialized: true,
   store : new FileStore(),
-  secret : process.env.SESSION_SECRET,
+  secret : "asdsadfjkh@#^12412523%@$^@#Q%3lkjfadf",
   cookie : {maxAge : SECONDS}
 }));
 

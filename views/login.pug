@@ -22,14 +22,18 @@ html(lang="en")
                 p.input-password
                   input(type="password" name="password" placeholder="비밀번호")
                 .login-etc
-                  p.id-save
-                    input(type="checkbox" name="isSavedUserId")
+                  //- p.id-save
+                  .check-optional.d-flex
+                    input#check-optional-input(type='checkbox' name="isSavedUserId")
+                    label(for='check-optional-input')
+                    //- input(type="checkbox" name="isSavedUserId")
                     span 아이디 저장
-                  p.login-not
-                    a(href="") 아이디
-                    |  / 
-                    a(href="") 비밀번호 찾기
-                    a(href="") 회원가입
+                  div.login-not
+                    p
+                      a(href="") 아이디
+                      |  / 
+                      a(href="") 비밀번호 찾기
+                    a(href="/signup") 회원가입
                 p
                   button.login-submit-btn(type="button") 로그인
         .footer
@@ -41,4 +45,4 @@ html(lang="en")
             a(href="https://note.baemin.com/")
               img(src="/images/login-logo-jangbu.png" alt="")
           p.copyright © Woowa Brothers Corp.
-  script(src="/javascripts/login.js")
+  script(type="module" src="/javascripts/login.js")
