@@ -181,7 +181,7 @@ listener.click($('.sign-up-confirm-btn'), async (element) => {
   await Object.values($form.elements).forEach(async (field) => {
     if(field.name !== '') {
       form[field.name] = field.checked ? true : field.value;
-      const res = await check[field.name]($(`input[name='${field.name}']`));
+      const res = await checkForm[field.name]($(`input[name='${field.name}']`));
       if (!res.success) {
         confirm = false;
         return;

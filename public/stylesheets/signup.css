@@ -305,3 +305,7 @@ input:-internal-autofill-selected {
   height: 0px;
   overflow: hidden;
 }
+
+.prevent-event {
+  pointer-events: none;
+}
