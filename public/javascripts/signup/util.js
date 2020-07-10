@@ -21,7 +21,23 @@ const addError = function(border_ele, res, msg_ele) {
   }
 }
 
+function Timer() {
+  this.interval = null;
+
+  this.start = function (callback, count) {
+    if (this.interval) {
+      this.clear();
+    }
+    this.interval = setInterval(() => {
+      callback();
+    },count);
+  }
+
+  this.clear = function() {
+    clearInterval(this.interval);
+  }
+}
 
 export {
-  textMessage, errorElement, addError
+  textMessage, errorElement, addError, Timer
 }

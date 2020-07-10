@@ -6,13 +6,7 @@ const listener = new function() {
   }
 
   this.focusout = function(ele, callback) {
-    ele.addEventListener('blur', e => {
-      // if (ele.classList.contains('error-border')) {
-      //   ele.classList.remove('error-border');
-      // }
-      // if (ele.parentNode.lastChild.classList.contains('text-message')) {
-      //   ele.parentNode.removeChild(ele.parentNode.lastChild);
-      // }
+    ele.addEventListener('focusout', e => {
       callback(ele);
     });
   }

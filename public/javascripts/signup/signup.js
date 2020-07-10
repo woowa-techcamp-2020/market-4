@@ -1,18 +1,17 @@
-// import validator from '../validator.js';
+import postcode from './postcode.js';
 import listener from './listener.js';
-import timer from './timer.js';
 import check from './checkSignup.js';
-import {textMessage, errorElement, addError} from './util.js';
+import {textMessage, errorElement, addError, Timer} from './util.js';
 import $fetch from '../fetch.js';
 
+const timer = new Timer();
 const $ = document.querySelector.bind(document);
 
-const postcode = new daum.Postcode({
-  oncomplete: function(data) {
-    $("input[name='postcode']").value = data.zonecode;
-    $("input[name='address1']").value = data.address;
-  }
-});
+postcode.oncomplete = function(data) {
+  $("input[name='postcode']").value = data.zonecode;
+  $("input[name='address1']").value = data.address;
+}
+
 listener.click($("input[name='postcode']"),()=> {
   postcode.open();
 });
@@ -90,7 +89,6 @@ listener.click($("label[for='check-optional-input']"), (element) => {
   }
 });
 
-//
 const $terms_all =  $("label[for='all']");
 const $essential_label = $("label[for='essential']");
 const $ad_label = $("label[for='receive_optional']");
@@ -163,7 +161,7 @@ listener.click($(".phone-button"), ele => {
       ele.textContent = '인증 받기';
       timer.clear();
     }
-  });
+  }, 1000);
 });
 
 listener.focusout($('.assign-input'), element => {
