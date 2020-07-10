@@ -1,4 +1,4 @@
-import {$, getValueInCookie, debouncing} from './signup/util.js';
+import {$, getValueInCookie, debouncing} from '../util.js';
 
 const NOT_ID = "아이디를 입력하지 않았습니다";
 const NOT_PWD = "비밀번호를 입력하지 않았습니다."
