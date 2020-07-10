@@ -14,10 +14,14 @@ CREATE TABLE IF NOT EXISTS members (
     advcheck Text)`;
 
 const INSERT_MEMBER_QUERY = `INSERT INTO members(userid, password, salt, name, email, phone, postcode, address1, address2, advcheck) values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`;
-const SELECT_MEMBER_QUERY = `SELECT * FROM members WHERE userid = "?"`;
+const SELECT_MEMBER_QUERY = `SELECT * FROM members WHERE userid =`;
+
+function getSelectMemberQuery (userid) {
+    return SELECT_MEMBER_QUERY + `"${userid}";`;
+}
 
 module.exports = {
     CREATE_TABLE_MEMBER_QUERY,
     INSERT_MEMBER_QUERY,
-    SELECT_MEMBER_QUERY
+    getSelectMemberQuery
 }

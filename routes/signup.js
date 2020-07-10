@@ -1,6 +1,6 @@
 const {convertPasswordWithSalt, makeSalt, convertPassword} = require('../pwCrypto.js');
 const router = require('express').Router();
-const { db, memberDAO } = require('../db.js');
+const { db, memberDAO } = require('../db/db.js');
 import validator from '../public/javascripts/validator.js';
 
 router.get('/', (req, res, next) => {

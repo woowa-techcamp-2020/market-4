@@ -2,7 +2,7 @@ const {convertPasswordWithSalt, makeSalt, convertPassword} = require('../pwCrypt
 const {
     CREATE_TABLE_MEMBER_QUERY,
     INSERT_MEMBER_QUERY,
-    SELECT_MEMBER_QUERY
+    getSelectMemberQuery
 } = require('./query.js');
 const MEMORY_DB = ':memory:';
 const LOCAL_DB = './local.db';
@@ -12,9 +12,6 @@ const LOCAL_DB = './local.db';
 // columns : userid, password, salt, email, name, phone, postcode, address1, address2, advcheck
 
 const sqlite3 = require('sqlite3').verbose();
-
-
-
 
 class DB {
     constructor(dbFilePath) {
@@ -45,13 +42,13 @@ class DB {
             console.log("[[DB CLOSE]]");
         })
     }
-    get(query, params) {
+    get(query) {
         return new Promise((resolve, reject) => {
-            this.db.get(query, params, (err, row) => {
-                if(err) rej(err);
-                else res(row);
-            })
-        })
+            this.db.get(query, (err, row) => {
+                if(err) reject(err);
+                else resolve(row);
+            });
+        });
     }
 }
 
@@ -65,8 +62,6 @@ class MemberDAO {
         return await this.db.run(CREATE_TABLE_MEMBER_QUERY);
     }
 
-    // userInfo : arr
-    // [userid, password, name, email, phone, postcode, address1, address2, advcheck]
     addUser(userInfo) {
         return new Promise((resolve, reject) => {
             try {
@@ -82,27 +77,18 @@ class MemberDAO {
     deleteTable() {
         return this.db.run("DELETE FROM members");
     }
-    async runQuery(query, params) {
-        const result = await this.db.get(query, params);
+    async runQuery(query) {
+        const result = await this.db.get(query);
         return result;
-        // return new Promise((res, rej) => {
-        //     const result = await this.db.get(query, params);
-        //     this.dao.db.get(query, (err, row) => {
-        //         if(err) rej(err);
-        //         else res(row);
-        //     })
-        // });
     }
     async getUserById(userid) {
         const escapedUserId = escape(userid);
-        return this.runQuery(SELECT_MEMBER_QUERY, [escapedUserId]);
-        // const SELECT_USER_QUERY = `SELECT * FROM members WHERE userid = "${userid}"`;
-        // return await this.runQuery(SELECT_USER_QUERY);
+        return this.runQuery(getSelectMemberQuery(escapedUserId));
     }
     async confirmUser(userid, password) {
-        const result = this.getUserById(userid);
-        // const query = `SELECT * from members WHERE userid="${userid}"`;
-        // const result = await this.runQuery(query);
+        const result = await this.getUserById(userid);
+        console.log(JSON.stringify(result));
+        
         if(!result) return false;
         
         const comparisonPwd = await convertPasswordWithSalt(password, result.salt);
@@ -113,12 +99,11 @@ class MemberDAO {
 }
 
 function init() {
-    // const db = new DB(LOCAL_DB);
-    const db = new DB(MEMORY_DB);
+    const db = new DB(LOCAL_DB);
     const memberDAO = new MemberDAO(db);
     memberDAO.createTable().then(async () => {
-        const {password, salt} = await convertPassword("helloWorld");
-        memberDAO.addUser(["park", password, salt, "james", "james@email.com", "123123123", "000-000", "주소1", "주소2", true]);
+        // const {password, salt} = await convertPassword("helloWorld");
+        // memberDAO.addUser(["park", password, salt, "james", "james@email.com", "123123123", "000-000", "주소1", "주소2", true]);
     });
     return {db, memberDAO};
 }

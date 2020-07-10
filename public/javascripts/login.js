@@ -36,7 +36,7 @@ function enterKeySubmit(e) {
 
 function run() {
     window.onload = e => {
-        const value = getValueInCookie('savedUserId');
+        const value = getValueInCookie('savedUserId') || "";
         userIdInput.value = value;
         isSaveUserCheckBox.checked = !!value;
     };
