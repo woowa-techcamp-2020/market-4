@@ -175,10 +175,9 @@ listener.click($('.assign-button'), element => {
 
 
 listener.click($('.sign-up-confirm-btn'), async (element) => {
-  // element.preventDefault();
+  $('.sign-up-confirm-btn').setAttribute('disabled', true);
   let confirm = true;
   const $form = $('form');
-
   const form = {};
   await Object.values($form.elements).forEach(async (field) => {
     if(field.name !== '') {
@@ -191,6 +190,10 @@ listener.click($('.sign-up-confirm-btn'), async (element) => {
     }
   });
 
+  if (!check.confirm_number($(`input[name='phone']`))) {
+    confirm = false;
+  }
+
   if(confirm) {
     const res = await $fetch.sendForm(form);
     if (res.success) {
@@ -200,9 +203,26 @@ listener.click($('.sign-up-confirm-btn'), async (element) => {
       location.href='/signup';
     }
   } else {
-    //
     console.log('fail');
   }
+  $('.sign-up-confirm-btn').removeAttribute('disabled');
 
 });
 
+// 페이지 이동 시 alert 창 띄우기
+// window.onunload = function(e) {
+//   console.log(e);
+//   if(document.readyState=="complete"){
+//     console.log('새로고침')
+//     //새로고침
+
+// } else if(document.readyState=="loading"){
+//   console.log('페이지 이동')
+//     //다른 페이지 이동
+
+// }
+//   // console.log(self);
+//   var dialogText = 'Dialog text here';
+//   e.returnValue = dialogText;
+//   return dialogText;
+// };

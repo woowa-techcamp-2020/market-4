@@ -25,8 +25,9 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
-app.use(favicon(path.join(__dirname,'public','images','favicon.ico')));
+app.use(favicon(path.join(__dirname,'public/images','favicon.ico')));
 
+console.log(__dirname);
 
 const SECONDS = 1000 * 5;
 

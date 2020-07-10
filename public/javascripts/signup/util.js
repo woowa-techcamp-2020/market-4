@@ -21,6 +21,7 @@ const addError = function(border_ele, res, msg_ele) {
   }
 }
 
+
 export {
   textMessage, errorElement, addError
 }

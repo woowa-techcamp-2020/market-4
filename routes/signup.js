@@ -14,7 +14,6 @@ router.post('/', async (req, res, next) => {
         const arr = [form.userid, password, salt, form.name, `${form.email_id}@${form.email_domain}`,
             form.phone, form.postcode, form.address1, form.address2, form.advcheck];
         const result = await memberDAO.addUser(arr);
-        // console.log(JSON.stringify(req.session));
         req.session.userid = form.userid;
         req.session.name = form.name;
         req.session.email = `${form.email_id}@${form.email_domain}`;
