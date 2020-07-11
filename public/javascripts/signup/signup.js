@@ -1,4 +1,4 @@
-import postcode from './postcode.js';
+// import postcode from './postcode.js';
 import listener from './listener.js';
 import {checkForm, checkError} from './checkSignup.js';
 import {Timer} from '../util.js';
@@ -7,10 +7,12 @@ import $fetch from '../fetch.js';
 const phoneTimer = new Timer();
 const $ = document.querySelector.bind(document);
 
-postcode.oncomplete = function(data) {
+const postcode = new daum.Postcode({
+  oncomplete: function(data) {
   $("input[name='postcode']").value = data.zonecode;
   $("input[name='address1']").value = data.address;
-}
+}});
+
 
 listener.click($("input[name='postcode']"),()=> {
   postcode.open();
